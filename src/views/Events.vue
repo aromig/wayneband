@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-white">
     <custom-header id="header" page-title="Events &amp; Schedule" />
 
     <main id="main-body" class="relative bg-white pt-8 mb-12">

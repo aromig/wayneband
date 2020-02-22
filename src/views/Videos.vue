@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-white">
     <custom-header page-title="Performance Videos" />
 
     <main class="relative bg-white text-gray-800 pt-2 pb-10">
@@ -51,21 +51,6 @@
               class="videoTitle my-4 text-center patua-one text-3xl text-shadow text-red-600 antialiased"
               v-html="currentVideo.title"
             ></div>
-
-            <SVGDivider
-              svgViewBox="0 0 2560 150"
-              svgClass="absolute left-0 overflow-hidden -mt-8"
-              points="2560 0 2560 200 0 200 0 150"
-              polyClass="text-red-800 fill-current"
-              polyTransform="translate(0, -10)"
-            />
-            <SVGDivider
-              svgViewBox="0 0 2560 125"
-              svgClass="absolute left-0 overflow-hidden -mt-0"
-              points="2560 0 2560 200 0 125"
-              polyClass="text-white fill-current"
-              polyTransform="translate(0, -10)"
-            />
           </div>
 
           <LoadingSpinner
@@ -79,7 +64,7 @@
 
           <div
             v-else
-            class="container videoList mt-48 mb-20 p-2 shadow-lg gallery-bg flex flex-wrap justify-center z-20"
+            class="container videoList mt-24 mb-20 p-2 shadow-lg gallery-bg flex flex-wrap justify-center z-20"
           >
             <div
               v-for="video in videoList"

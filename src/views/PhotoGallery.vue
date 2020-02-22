@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-white">
     <custom-header page-title="Photo Galleries" />
 
     <main class="relative bg-white pt-8 pb-12">

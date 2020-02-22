@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-black">
+  <div class="home bg-white">
     <header>
       <div
         class="relative pt-16 pb-16 flex content-center items-center justify-center overflow-hidden"
@@ -109,7 +109,6 @@ export default {
   height: 100%;
   width: 100%;
   transition: background-image 1s linear;
-  animation: zoomIn 20s infinite;
 }
 
 .colorOverlay {
@@ -121,6 +120,12 @@ export default {
     #000000 75%,
     #c53030
   );
+}
+
+@media (min-width: 768px) {
+  #backgroundImage {
+    animation: zoomIn 20s infinite;
+  }
 }
 
 @keyframes zoomIn {
