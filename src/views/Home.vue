@@ -8,7 +8,7 @@
         <VideoBackground
           v-show="useVideoBg"
           :sources="videoSources"
-          class="fixed h-full min-w-full"
+          class="fixed h-full min-w-full overflow-hidden"
           style="width: 177.77777778vh; min-height: 56.25vw"
           id="videoBackground"
         >
@@ -64,7 +64,7 @@ export default {
     return {
       bgImages: null,
       currentImage: null,
-      useVideoBg: true,
+      useVideoBg: false,
       videoSources: wmc.bgVideos
     };
   },
