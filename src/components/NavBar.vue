@@ -92,7 +92,7 @@
               @click="toggleVideo($event, !videoOn)"
               :title="toggleVideoTitle"
             >
-              <i id="videoOnOff" class="fas fa-video text-2xl"></i>
+              <i id="videoOnOff" class="fas fa-video-slash text-2xl"></i>
               <span class="lg:hidden inline-block ml-2">{{
                 toggleVideoTitle
               }}</span>
@@ -159,7 +159,7 @@ export default {
   mounted() {
     let videoBgPref = localStorage.getItem("videoBgPref");
     if (videoBgPref === null) {
-      localStorage.setItem("videoBgPref", true);
+      localStorage.setItem("videoBgPref", false);
     } else {
       videoBgPref = videoBgPref == "true"; // convert true string to boolean
       this.toggleVideo(event, videoBgPref);
@@ -182,12 +182,12 @@ export default {
 <style lang="scss">
 nav {
   border-bottom: 0px solid #c53030;
-  opacity: 90%;
+  opacity: 0.9;
   transition-property: opacity, border-bottom-width;
   transition-duration: 1s, 0.2s;
   transition-timing-function: ease, ease-in;
   &.scrolled {
-    opacity: 100%;
+    opacity: 1;
   }
   &.border-bottom {
     border-bottom-width: 2px;
