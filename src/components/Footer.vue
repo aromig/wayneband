@@ -19,7 +19,7 @@
         svgClass="absolute bottom-0 overflow-hidden z-50"
         points="2560 0 2560 200 125 100"
         polyClass="text-gray-300 fill-current"
-        polyTransform="translate(0, 2)"
+        polyTransform="translate(0, 10)"
       />
     </div>
     <div

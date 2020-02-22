@@ -19,7 +19,7 @@
           svgClass="absolute bottom-0 overflow-hidden"
           points="2560 0 2560 200 0 100"
           polyClass="text-white fill-current"
-          polyTransform="translate(0, 2)"
+          polyTransform="translate(0, 10)"
         />
       </div>
 
@@ -42,7 +42,7 @@
 
             <video-embed
               :src="currentVideo.video_url"
-              style="height: 100%"
+              class="h-full"
               :height="currentVideo.height"
               :width="currentVideo.width"
             ></video-embed>
@@ -215,6 +215,9 @@ export default {
 @media (max-width: 640px) {
   .gallery-card {
     height: 3rem;
+  }
+  .videoSection {
+    min-height: 240px;
   }
 }
 @media (max-width: 500px) {

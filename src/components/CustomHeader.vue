@@ -75,4 +75,7 @@ export default {
 .colorOverlay {
   background: linear-gradient(160deg, #000000 60%, #c53030);
 }
+
+@media (min-width: 768px) {
+}
 </style>

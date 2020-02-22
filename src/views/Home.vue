@@ -14,10 +14,10 @@
         >
           <span class="w-full h-full absolute colorOverlay"></span>
         </VideoBackground>
-        <div v-show="!useVideoBg" class="fixed w-full h-full overflow-hidden">
+        <div v-show="!useVideoBg" class=" fixed w-full h-full overflow-hidden">
           <div
             id="backgroundImage"
-            class="bg-center bg-cover"
+            class="bg-center bg-cover bg-fixed w-full h-full"
             :style="{ 'background-image': currentImage }"
           >
             <span class="w-full h-full absolute opacity-75 colorOverlay"></span>
