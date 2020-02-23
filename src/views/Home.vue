@@ -112,7 +112,6 @@ export default {
 }
 
 .colorOverlay {
-  opacity: 90%;
   background: linear-gradient(
     160deg,
     #c53030 0%,
