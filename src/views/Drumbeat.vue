@@ -22,8 +22,21 @@
           polyTransform="translate(0, 10)"
         />
       </div>
-      <div class="py-4 w-9/12 lg:w-10/12 mx-auto text-gray-900">
-        foo
+      <div class="py-4 w-1/2 mx-auto text-gray-900">
+        <Modal
+          :show-modal="isModalVisible"
+          class="modal"
+          @close="closeModal"
+          :modalStyle="{
+            'background-color': '#ffffff',
+            width: '70%',
+            height: '90%',
+            margin: '0 auto',
+            border: '10px solid #fff'
+          }"
+        >
+          <PDFViewer slot="body" :url="shownPDF" height="100%" />
+        </Modal>
       </div>
     </main>
   </div>
@@ -32,13 +45,36 @@
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
 import SVGDivider from "@/components/SVGDivider.vue";
+import Modal from "@/components/Modal.vue";
+
+import PDFViewer from "vue-instant-pdf-viewer";
+
 export default {
   name: "Drumbeat",
   components: {
     CustomHeader,
-    SVGDivider
-  }
+    SVGDivider,
+    Modal,
+    PDFViewer
+  },
+  data() {
+    return {
+      isModalVisible: false,
+      shownPDF: "/pdf/WMC Drumbeat 22_09.pdf"
+    };
+  },
+  methods: {
+    closeModal() {
+      this.isModalVisible = false;
+    }
+  },
+  mounted() {}
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.modal {
+  height: 90vh;
+  width: 50vw;
+}
+</style>

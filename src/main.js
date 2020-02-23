@@ -10,6 +10,7 @@ import VideoEmbed from "v-video-embed";
 Vue.use(LoadScript);
 Vue.use(VideoEmbed);
 Vue.loadScript("/js/custom.js");
+Vue.loadScript("/js/pdfobject.js");
 Vue.config.productionTip = false;
 
 new Vue({
