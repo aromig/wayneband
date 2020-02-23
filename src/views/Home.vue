@@ -1,9 +1,9 @@
 <template>
-  <div class="home bg-white">
+  <div class="home bg-black">
     <header>
       <div
         class="relative pt-16 pb-16 flex content-center items-center justify-center overflow-hidden"
-        style="min-height: 80vh"
+        style="min-height: 70vh"
       >
         <VideoBackground
           v-show="useVideoBg"
@@ -120,12 +120,6 @@ export default {
     #000000 75%,
     #c53030
   );
-}
-
-@media (min-width: 768px) {
-  #backgroundImage {
-    animation: zoomIn 20s infinite;
-  }
 }
 
 @keyframes zoomIn {
