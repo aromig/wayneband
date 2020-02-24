@@ -54,9 +54,15 @@
               >
             </p>
             <p>
-              Where: {{ event.event_location_name }}<br />{{
-                event.event_full_address
-              }}
+              Where: {{ event.event_location_name }}
+              <span
+                v-if="
+                  event.event_full_address !=
+                    'undefined undefined, undefined, undefined'
+                "
+                ><br />
+                {{ event.event_full_address }}</span
+              >
             </p>
             <p v-if="event.related_link">More Info: {{ event.related_link }}</p>
           </section>
