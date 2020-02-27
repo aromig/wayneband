@@ -3,24 +3,24 @@
     <transition name="modal-fade">
       <div
         v-if="showModal"
-        class="overflow-x-hidden overflow-y-auto -m-4 fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex modal-backdrop"
+        class="fixed inset-0 z-50 flex items-center justify-center -m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none modal-backdrop"
         v-on:click="toggleModal()"
       >
         <div
-          class="border-0 shadow-lg relative flex flex-col z-50"
+          class="relative z-50 flex flex-col border-0 shadow-lg"
           :style="modalStyle"
         >
           <!--header-->
           <div class="flex items-start justify-between p-1">
             <button
-              class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+              class="float-right p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none opacity-5 focus:outline-none"
               v-on:click="toggleModal()"
             >
               <span
-                class="bg-transparent text-black opacity-5 h-6 w-6 text-3xl block outline-none focus:outline-none flex items-center"
+                class="flex items-center block w-6 h-6 text-3xl text-black bg-transparent outline-none opacity-5 focus:outline-none"
               >
                 <svg
-                  class="fill-current h-6 w-6 text-black hover:text-red-700"
+                  class="w-6 h-6 text-black fill-current hover:text-red-700"
                   style="transform: scale(1.5)"
                   role="button"
                   xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
             </slot>
           </div>
           <!--body-->
-          <div class="relative p3 flex-auto">
+          <div class="relative flex-auto p3">
             <slot name="body"></slot>
           </div>
           <!--footer-->

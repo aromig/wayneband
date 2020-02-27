@@ -2,9 +2,9 @@
   <div class="bg-white">
     <custom-header page-title="Performance Videos" />
 
-    <main class="relative bg-white text-gray-800 pt-2 pb-10">
+    <main class="relative pt-2 pb-10 text-gray-800 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -23,15 +23,15 @@
         />
       </div>
 
-      <section class="mt-2 pb-8">
+      <section class="pb-8 mt-2">
         <div
-          class="container mx-auto px-4 md:px-0 videoGrid max-w-full md:max-w-3xl lg:max-w-4xl"
+          class="container max-w-full px-4 mx-auto md:px-0 videoGrid md:max-w-3xl lg:max-w-4xl"
         >
           <div
-            class="videoSection border-4 border-red-700 border-solid my-12 z-30"
+            class="z-30 my-12 border-4 border-red-700 border-solid videoSection"
           >
             <div
-              class="h-full flex justify-center items-center bg-black"
+              class="flex items-center justify-center h-full bg-black"
               v-if="!videoLoaded"
             >
               <img
@@ -48,7 +48,7 @@
             ></video-embed>
 
             <div
-              class="videoTitle my-4 text-center patua-one text-3xl text-shadow text-red-600 antialiased"
+              class="my-4 text-3xl antialiased text-center text-red-600 videoTitle patua-one text-shadow"
               v-html="currentVideo.title"
             ></div>
           </div>
@@ -64,27 +64,27 @@
 
           <div
             v-else
-            class="container videoList mt-24 mb-20 p-2 shadow-lg gallery-bg flex flex-wrap justify-center z-20"
+            class="container z-20 flex flex-wrap justify-center p-2 mt-24 mb-20 shadow-lg videoList gallery-bg"
           >
             <div
               v-for="video in videoList"
               :key="video.id"
-              class="w-6/12 md:w-6/12 lg:w-4/12 px-3 py-3 video-item"
+              class="w-6/12 px-3 py-3 md:w-6/12 lg:w-4/12 video-item"
             >
               <a @click="loadVideo(video)">
                 <div
                   :id="'video-' + video.id"
-                  class="relative text-white w-4/12 shadow-2xl p-2 bg-contain bg-no-repeat bg-top hover:border-red-800 border-8 border-white video-item w-full cursor-pointer bg-black"
+                  class="relative w-4/12 w-full p-2 text-white bg-black bg-top bg-no-repeat bg-contain border-8 border-white shadow-2xl cursor-pointer hover:border-red-800 video-item"
                   :style="{
                     'min-height': '200px',
                     'background-image': 'url(' + video.featured_media_url + ')'
                   }"
                 >
                   <div
-                    class="w-full absolute bottom-0 -ml-2 gallery-card bg-white  text-center"
+                    class="absolute bottom-0 w-full -ml-2 text-center bg-white gallery-card"
                   >
                     <span
-                      class="text-md text-gray-800 open-sans font-semibold antialiased"
+                      class="antialiased font-semibold text-gray-800 text-md open-sans"
                       v-html="video.title"
                     />
                   </div>
@@ -166,10 +166,6 @@ export default {
 </script>
 
 <style lang="scss">
-.text-shadow {
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9);
-}
-
 .videoGrid {
   display: grid;
   grid-template-columns: 1fr;

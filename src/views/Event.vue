@@ -2,9 +2,9 @@
   <div class="bg-white">
     <custom-header :page-title="event.title" />
 
-    <main class="relative bg-white pt-8 pb-12">
+    <main class="relative pt-8 pb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -22,28 +22,34 @@
           polyTransform="translate(0, 10)"
         />
       </div>
-      <div
+      <section
         :id="'event-' + event.id"
-        class="py-4 w-9/12 lg:w-10/12 mx-auto text-gray-900"
+        class="w-10/12 py-4 mx-auto text-gray-900"
       >
-        <img
+        <div
           v-if="featured_media"
-          :src="featured_media"
-          class="w-full lg:max-w-xl mx-auto mb-6 float-right rounded-lg"
-        />
+          class="mx-auto md:w-6/12 md:float-right md:m-8"
+        >
+          <img
+            :src="featured_media"
+            class="border-4 border-red-800 border-solid shadow-lg"
+          />
+        </div>
 
         <article
           v-html="event.content"
           id="event-content"
-          class="py-4 break-words text-lg list-none"
+          class="w-full py-4 text-lg break-words lg:1/2 md:pr-12"
         />
+      </section>
 
+      <div class="w-9/12 mx-auto lg:w-10/12">
         <div
-          class="flex md:flex-row flex-col flex-wrap justify-between w-full mb-6"
+          class="flex flex-col flex-wrap items-center justify-center w-full mb-6 md:flex-row lg:justify-between"
         >
           <section
             id="event-date-time"
-            class="text-md font-semibold card shadow-lg"
+            class="font-semibold shadow-lg text-md card"
           >
             <p>When: {{ formatted_date }}</p>
             <p>
@@ -70,7 +76,7 @@
           <google-map-embed
             v-if="event.event_location"
             :src_url="event.event_map_url"
-            class="justify-end border-2 border-solid border-red-800 w-full h-64 lg:w-1/2 mt-8 lg:mt-0 shadow-lg"
+            class="justify-end w-full h-64 mt-8 border-2 border-red-800 border-solid shadow-lg lg:w-1/2 lg:mt-0"
           />
         </div>
       </div>
@@ -134,89 +140,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$link_color: #c53030;
-$link_color_hover: #f56565;
-$text-gray-700: #4a5568;
-
-.text-shadow {
-  text-shadow: 3px 3px 3px #000;
-}
-
-#event-content {
-  & h1,
-  h2,
-  h3 {
-    font-family: "Open Sans";
-  }
-  & article {
-    font-size: 1.25em;
-  }
-  & .wp-block-group,
-  .wp-block-image {
-    display: block;
-  }
-  & .img-center img {
-    display: block;
-    margin: 0 auto;
-  }
-  & h2 {
-    font-size: 1.5rem;
-    margin: 1.5rem 0;
-    color: #c53030;
-  }
-  & h3 {
-    font-size: 1.5rem;
-  }
-  & p {
-    margin: 1rem 0;
-    &.signup_link {
-      margin-left: 1rem;
-      &:before {
-        color: $link_color;
-        content: "\f14b\00a0";
-        font-family: "Font Awesome 5 Free";
-        font-size: 1.5rem;
-        display: inline-block;
-        padding-right: 3px;
-        vertical-align: middle;
-        font-weight: 900;
-      }
-    }
-  }
-  & .has-text-align-center {
-    text-align: center;
-
-    & strong {
-      color: #c53030;
-    }
-  }
-  & a {
-    color: $link_color;
-    &:hover {
-      color: $link_color_hover;
-      text-decoration: underline;
-    }
-  }
-  & hr.wp-block-separator {
-    margin: 0.5rem;
-    border: 1px solid #f53030;
-  }
-}
-
-.wp-block-embed__wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
-}
-.wp-block-embed__wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .card {
   border-width: 2px;
   padding: 2rem;

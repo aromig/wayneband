@@ -1,10 +1,10 @@
 <template>
   <footer
-    class="relative bg-gray-300 pt-8 pb-6 z-50 bg-no-repeat bg-left-top"
+    class="relative z-50 pt-8 pb-6 bg-gray-300 bg-left-top bg-no-repeat"
     style="background-image: url('/img/trombone_silhouette.svg')"
   >
     <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 upward-shadow z-20"
+      class="absolute top-0 left-0 right-0 bottom-auto z-20 w-full -mt-20 overflow-hidden pointer-events-none upward-shadow"
       style="height: 80px; transform: translateZ(0px);"
     >
       <SVGDivider
@@ -23,20 +23,20 @@
       />
     </div>
     <div
-      class="container mx-auto w-11/12 p-4 rounded-lg"
+      class="container w-11/12 p-4 mx-auto rounded-lg"
       style="background-color: rgba(0, 0, 0, .1)"
     >
-      <div class="flex flex-wrap sm:flex-no-wrap md:flex-row-reverse w-full">
-        <div class="w-full flex flex-col sm:flex-row mx-0 shadow-xl">
+      <div class="flex flex-wrap w-full sm:flex-no-wrap md:flex-row-reverse">
+        <div class="flex flex-col w-full mx-0 shadow-xl sm:flex-row">
           <div
-            class="w-full sm:w-8/12 px-4 py-2 rounded-t-lg sm:rounded-tr-none md:rounded-l-lg"
+            class="w-full px-4 py-2 rounded-t-lg sm:w-8/12 sm:rounded-tr-none md:rounded-l-lg"
             style="background-color: rgba(255, 255, 255, .75)"
           >
             <span
-              class="block uppercase text-red-700 text-sm font-semibold mb-2"
+              class="block mb-2 text-sm font-semibold text-red-700 uppercase"
               >Upcoming Events</span
             >
-            <ul class="list-unstyled text-sm text-gray-700 font-semibold">
+            <ul class="text-sm font-semibold text-gray-700 list-unstyled">
               <li v-for="event in events" :key="event.id" class="pb-2">
                 <router-link
                   :to="'/events/' + event.slug"
@@ -45,49 +45,49 @@
               </li>
             </ul>
             <router-link
-              class="text-gray-700 hover:text-red-800 font-semibold block pb-2 text-lg"
+              class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
               to="/events"
-              ><i class="fas fa-calendar-alt text-lg"></i> More
+              ><i class="text-lg fas fa-calendar-alt"></i> More
               Events</router-link
             >
           </div>
           <div
-            class="w-full sm:w-4/12 py-2 rounded-b-lg sm:rounded-bl-none md:rounded-r-lg"
+            class="w-full py-2 rounded-b-lg sm:w-4/12 sm:rounded-bl-none md:rounded-r-lg"
             style="background-color: rgba(255, 255, 255, .75)"
           >
-            <div class="flex flex-wrap items-top mb-2">
-              <div class="w-full lg:w-10/12 px-2 ml-auto">
+            <div class="flex flex-wrap mb-2 items-top">
+              <div class="w-full px-2 ml-auto lg:w-10/12">
                 <span
-                  class="block uppercase text-red-700 text-sm font-semibold mb-2"
+                  class="block mb-2 text-sm font-semibold text-red-700 uppercase"
                   >Resources</span
                 >
                 <ul class="list-unstyled">
                   <li>
                     <a
-                      class="text-gray-700 hover:text-red-800 font-semibold block pb-2 text-lg"
+                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       href="https://www.facebook.com/groups/WayneMusicClub/"
                       target="_blank"
-                      ><i class="fab fa-facebook-square text-lg"></i> Discuss</a
+                      ><i class="text-lg fab fa-facebook-square"></i> Discuss</a
                     >
                   </li>
                   <li>
                     <a
-                      class="text-gray-700 hover:text-red-800 font-semibold block pb-2 text-lg"
+                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       href="https://paypal.me/WayneMusicClub"
                       target="_blank"
-                      ><i class="fab fa-paypal text-lg"></i> Pay Fees</a
+                      ><i class="text-lg fab fa-paypal"></i> Pay Fees</a
                     >
                   </li>
                   <li>
                     <router-link
-                      class="text-gray-700 hover:text-red-800 font-semibold block pb-2 text-lg"
+                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       to="/drumbeat"
-                      ><i class="fas fa-drum text-lg"></i> Drumbeat</router-link
+                      ><i class="text-lg fas fa-drum"></i> Drumbeat</router-link
                     >
                   </li>
                   <li>
                     <a
-                      class="text-gray-700 hover:text-red-800 font-semibold block pb-2 text-lg"
+                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       href=""
                     ></a>
                   </li>
@@ -99,10 +99,10 @@
       </div>
       <hr class="my-6 ml-auto border-red-800 md:w-4/6" />
       <div
-        class="flex flex-wrap items-center md:justify-between justify-center"
+        class="flex flex-wrap items-center justify-center md:justify-between"
       >
-        <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-          <div class="text-sm text-gray-600 font-semibold py-1">
+        <div class="w-full px-4 mx-auto text-center md:w-4/12">
+          <div class="py-1 text-sm font-semibold text-gray-600">
             Copyright © {{ date }} Wayne Music Club
             <address class="block">
               P.O. Box 24392, Huber Heights, Ohio 45424

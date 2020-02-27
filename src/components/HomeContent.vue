@@ -1,7 +1,7 @@
 <template>
-  <main class="relative bg-gray-100 pt-8">
+  <main class="relative pt-8 bg-gray-100">
     <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+      class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
       style="height: 80px; transform: translateZ(0px)"
     >
       <SVGDivider
@@ -23,22 +23,22 @@
 
     <!-- Cards -->
     <section class="pb-0">
-      <div class="container mx-auto px-4 md:px-0">
-        <div class="flex flex-wrap md:-mt-24 z-50">
+      <div class="container px-4 mx-auto md:px-0">
+        <div class="z-50 flex flex-wrap md:-mt-24">
           <!-- About -->
-          <div class="w-full md:w-4/12 px-4 text-center md:mt-16 my-4 md:px-4 ">
-            <div class="relative flex flex-col min-w-0 break-words w-full pb-6">
+          <div class="w-full px-4 my-4 text-center md:w-4/12 md:mt-16 md:px-4 ">
+            <div class="relative flex flex-col w-full min-w-0 pb-6 break-words">
               <router-link to="/about">
-                <div class="px-4 py-5 flex-auto">
+                <div class="flex-auto px-4 py-5">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-20 h-20 mb-5 shadow-lg rounded-full bg-red-700 hover:bg-red-600"
+                    class="inline-flex items-center justify-center w-20 h-20 p-3 mb-5 text-center text-white bg-red-700 rounded-full shadow-lg hover:bg-red-600"
                   >
-                    <i class="fas fa-info text-5xl"></i>
+                    <i class="text-5xl fas fa-info"></i>
                   </div>
                   <h6 class="text-2xl font-semibold text-gray-700">
                     About
                   </h6>
-                  <p class="text-xl mt-2 mb-4 text-gray-600 hover:text-red-500">
+                  <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
                     Our organization and band programs.
                   </p>
                 </div>
@@ -52,23 +52,23 @@
           </div>
 
           <!-- Announcements -->
-          <div class="w-full md:w-4/12 px-4 text-center my-4 md:my-0 md:mt-3">
-            <div class="relative flex flex-col min-w-0 break-words w-full">
+          <div class="w-full px-4 my-4 text-center md:w-4/12 md:my-0 md:mt-3">
+            <div class="relative flex flex-col w-full min-w-0 break-words">
               <router-link to="/announcements">
-                <div class="px-4 py-5 flex-auto">
+                <div class="flex-auto px-4 py-5">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-20 h-20 mb-5 shadow-lg rounded-full bg-blue-800 hover:bg-blue-500"
+                    class="inline-flex items-center justify-center w-20 h-20 p-3 mb-5 text-center text-white bg-blue-800 rounded-full shadow-lg hover:bg-blue-500"
                   >
-                    <i class="fas fa-bullhorn text-5xl"></i>
+                    <i class="text-5xl fas fa-bullhorn"></i>
                   </div>
                   <h6 class="text-2xl font-semibold text-gray-700">
                     Announcements
                   </h6>
-                  <p class="text-xl mt-2 mb-4 text-gray-600">
+                  <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
                     Latest news regarding concerts, performances, fundraisers,
                     and other information.
                   </p>
-                  <ul class="mt-2 mb-4 text-red-800 pages text-xl ">
+                  <ul class="mt-2 mb-4 text-xl text-red-800 pages ">
                     <li
                       v-for="announcement in announcements"
                       :key="announcement.id"
@@ -86,18 +86,18 @@
           </div>
 
           <!-- Docs -->
-          <div class="w-full md:w-4/12 px-4 text-center y-4 md:mb-0 md:-mt-6">
-            <div class="relative flex flex-col min-w-0 break-words w-full mb-4">
-              <div class="px-4 py-5 flex-auto">
+          <div class="w-full px-4 text-center md:w-4/12 y-4 md:mb-0 md:-mt-6">
+            <div class="relative flex flex-col w-full min-w-0 mb-4 break-words">
+              <div class="flex-auto px-4 py-5">
                 <div
-                  class="text-white p-3 text-center inline-flex items-center justify-center w-20 h-20 mb-5 shadow-lg rounded-full bg-green-800 hover:bg-green-500"
+                  class="inline-flex items-center justify-center w-20 h-20 p-3 mb-5 text-center text-white bg-green-800 rounded-full shadow-lg hover:bg-green-500"
                 >
-                  <i class="fas fa-clipboard text-5xl"></i>
+                  <i class="text-5xl fas fa-clipboard"></i>
                 </div>
                 <h6 class="text-2xl font-semibold text-gray-700">
                   Important Documents
                 </h6>
-                <ul class="text-xl mt-2 mb-4 text-red-800 pages">
+                <ul class="mt-2 mb-4 text-xl text-red-800 pages">
                   <li v-for="doc in docs" :key="doc.id">
                     <router-link :to="doc.path" class="hover:text-red-500">{{
                       doc.title
@@ -114,7 +114,7 @@
     <!-- Recent Posts -->
     <section
       id="recent-posts"
-      class="container max-w-full md:px-12 lg:px-24 bg-black bg-fixed bg-center bg-cover"
+      class="container max-w-full bg-fixed bg-black bg-center bg-cover md:px-12 lg:px-24"
       :style="{
         'background-image': currentImage
       }"
@@ -132,7 +132,7 @@
         polyStyle="box-shadow: inset 0 25px 50px -12px rgba(0, 0, 0, 0.25)"
       />
 
-      <PostList class="bg-white text-gray-800" />
+      <PostList class="text-gray-800 bg-white" />
     </section>
   </main>
 </template>
@@ -196,9 +196,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$link_color: #c53030;
-$link_color_hover: #f56565;
-
 #recent-posts {
   transition: background-image 1s linear;
 }

@@ -2,9 +2,9 @@
   <div class="bg-white">
     <custom-header page-title="Photo Galleries" />
 
-    <main class="relative bg-white pt-8 pb-12">
+    <main class="relative pt-8 pb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -24,11 +24,11 @@
       </div>
       <div
         id="photo_gallery"
-        class="py-4 w-9/12 lg:w-10/12 mx-auto text-gray-900"
+        class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12"
       ></div>
 
       <section class="pb-0 sm:px-2 md:px-16">
-        <div class="container mx-auto px-4 md:px-0 py-10">
+        <div class="container px-4 py-10 mx-auto md:px-0">
           <LoadingSpinner
             v-if="loading"
             class="mt-6"
@@ -42,14 +42,14 @@
               :current-page="currentPage"
               :page-count="pageCount"
               :visible-pages-count="visiblePagesCount"
-              class="flex flex-row justify-center items-center text-gray-800 mb-6 text-xl"
+              class="flex flex-row items-center justify-center mb-6 text-xl text-gray-800"
               @nextPage="pageChangeHandle('next')"
               @previousPage="pageChangeHandle('previous')"
               @loadPage="pageChangeHandle"
             />
 
             <div
-              class="flex flex-wrap justify-center bg-gray-500 p-2 shadow-lg gallery-bg"
+              class="flex flex-wrap justify-center p-2 bg-gray-500 shadow-lg gallery-bg"
             >
               <PhotoGalleryCard
                 v-for="gallery in galleries"
@@ -62,7 +62,7 @@
               :current-page="currentPage"
               :page-count="pageCount"
               :visible-pages-count="visiblePagesCount"
-              class="flex flex-row justify-center items-center text-gray-800 mt-6 text-xl"
+              class="flex flex-row items-center justify-center mt-6 text-xl text-gray-800"
               @nextPage="pageChangeHandle('next')"
               @previousPage="pageChangeHandle('previous')"
               @loadPage="pageChangeHandle"
@@ -165,10 +165,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text-shadow {
-  text-shadow: 3px 3px 3px #000;
-}
-
 #post-content p {
   margin: 1rem 0;
 }

@@ -1,7 +1,7 @@
 <template>
   <header>
     <div
-      class="relative pt-16 pb-32 flex content-center items-center justify-center"
+      class="relative flex items-center content-center justify-center pt-16 pb-32"
       style="min-height: 40vh"
     >
       <div class="absolute top-0 w-full h-full overflow-hidden">
@@ -11,10 +11,10 @@
           :style="{ 'background-image': currentImage }"
         >
           <span
-            class="w-full h-full flex flex-col absolute items-center opacity-75 colorOverlay justify-center"
+            class="absolute flex flex-col items-center justify-center w-full h-full opacity-75 colorOverlay"
           >
             <h1
-              class="text-white text-4xl md:text-5xl w-full text-center shadow-2xl font-semibold patua-one"
+              class="w-full text-4xl font-semibold text-center text-white shadow-2xl md:text-5xl patua-one"
               v-html="PageTitle"
             ></h1>
           </span>

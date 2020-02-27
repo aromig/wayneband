@@ -1,7 +1,7 @@
 <template>
-  <div class="calendar border-2 p-2 shadow-md open-sans">
+  <div class="p-2 border-2 shadow-md calendar open-sans">
     <div
-      class="month-indicator w-full text-center font-semibold text-gray-600 pb-2 flex flex-row flex-no-wrap justify-between"
+      class="flex flex-row flex-no-wrap justify-between w-full pb-2 font-semibold text-center text-gray-600 month-indicator"
     >
       <button class="text-lg hover:text-red-700" @click="previousMonth">
         <i class="fas fa-arrow-alt-circle-left"></i>
@@ -13,7 +13,7 @@
         <i class="fas fa-arrow-alt-circle-right"></i>
       </button>
     </div>
-    <div class="day-of-week text-xs font-semibold text-center">
+    <div class="text-xs font-semibold text-center day-of-week">
       <div>Sun</div>
       <div>Mon</div>
       <div>Tue</div>
@@ -22,7 +22,7 @@
       <div>Fri</div>
       <div>Sat</div>
     </div>
-    <div class="date-grid text-center">
+    <div class="text-center date-grid">
       <button
         v-for="index in daysInMonth"
         :key="index"

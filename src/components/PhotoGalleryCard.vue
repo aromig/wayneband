@@ -1,17 +1,17 @@
 <template>
-  <div class="w-full md:w-6/12 lg:w-4/12 xl:w-3/12 px-3 py-3">
+  <div class="w-full px-3 py-3 md:w-6/12 lg:w-4/12 xl:w-3/12">
     <router-link :to="'/photos/' + gallery.slug + '/'">
       <div
-        class="relative text-white w-full shadow-2xl p-2 bg-cover bg-center hover:border-red-800 border-8 border-white"
+        class="relative w-full p-2 text-white bg-center bg-cover border-8 border-white shadow-2xl hover:border-red-800"
         style="min-height: 40vh"
         :style="{
           'background-image': featured_media
         }"
       >
-        <div class="w-full absolute bottom-0 -ml-2 gallery-card">
+        <div class="absolute bottom-0 w-full -ml-2 gallery-card">
           <h2
             v-html="gallery_title"
-            class="text-xl font-semibold antialiased text-center open-sans bg-white text-gray-700 h-full"
+            class="h-full text-xl antialiased font-semibold text-center text-gray-700 bg-white open-sans"
           ></h2>
         </div>
       </div>

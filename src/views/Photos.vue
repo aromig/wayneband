@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white">
     <custom-header :page-title="gallery.title" />
-    <main class="relative bg-white pt-8 pb-12">
+    <main class="relative pt-8 pb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -22,7 +22,7 @@
         />
       </div>
 
-      <section class="py-4 w-9/12 lg:w-10/12 mx-auto text-gray-900">
+      <section class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12">
         <LoadingSpinner
           v-if="loading"
           class="mt-6"
@@ -37,23 +37,23 @@
             :current-page="currentPage"
             :page-count="pageCount"
             :visible-pages-count="visiblePagesCount"
-            class="flex flex-row justify-center items-center text-gray-800 my-6 text-xl"
+            class="flex flex-row items-center justify-center my-6 text-xl text-gray-800"
             @nextPage="pageChangeHandle('next')"
             @previousPage="pageChangeHandle('previous')"
             @loadPage="pageChangeHandle"
           />
 
-          <div class="grid p-4 shadow-lg border-8 border-red-800 gallery-bg">
+          <div class="grid p-4 border-8 border-red-800 shadow-lg gallery-bg">
             <div
               v-for="photo in photos"
               :key="photo.id"
               :style="{
                 'background-image': `url('${photo.thumb.source_url}')`
               }"
-              class="bg-cover bg-center hover:border-red-800 cursor-pointer border-8 border-white shadow-2xl"
+              class="bg-center bg-cover border-8 border-white shadow-2xl cursor-pointer hover:border-red-800"
             >
               <a
-                class="w-full h-full inline-block"
+                class="inline-block w-full h-full"
                 target="_blank"
                 @click="showModal(photo)"
               />
@@ -64,7 +64,7 @@
             :current-page="currentPage"
             :page-count="pageCount"
             :visible-pages-count="visiblePagesCount"
-            class="flex flex-row justify-center items-center text-gray-800 mt-6 text-xl"
+            class="flex flex-row items-center justify-center mt-6 text-xl text-gray-800"
             @nextPage="pageChangeHandle('next')"
             @previousPage="pageChangeHandle('previous')"
             @loadPage="pageChangeHandle"
@@ -94,7 +94,7 @@
       <div
         slot="footer"
         v-html="gallery.title"
-        class="text-gray-700 antialiased text-xl patua-one"
+        class="text-xl antialiased text-gray-700 patua-one"
       />
     </ImageModal>
   </div>

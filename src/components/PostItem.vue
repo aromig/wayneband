@@ -1,15 +1,15 @@
 <template>
-  <article class="py-4 w-9/12 mx-auto post text-gray-900">
+  <article class="w-9/12 py-2 mx-auto text-gray-900 post">
     <header>
-      <h2 class="text-3xl font-semibold text-red-700">
+      <h2 class="mb-0 text-2xl font-semibold text-red-700">
         <router-link :to="post.path" class="hover:text-red-500 open-sans">
           {{ post.title }}
         </router-link>
       </h2>
     </header>
 
-    <section class="my-1">
-      <span class="open-sans font-semibold">{{ formatDate(post.date) }}</span>
+    <section class="my-0">
+      <span class="font-semibold open-sans">{{ formatDate(post.date) }}</span>
       <p v-html="post.excerpt" class="mt-2"></p>
     </section>
   </article>
@@ -35,9 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-$link_color: #c53030;
-$link_color_hover: #f56565;
-
 .more-link,
 .post {
   & section {

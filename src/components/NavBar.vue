@@ -1,21 +1,21 @@
 <template>
   <nav
-    class="top-0 fixed z-40 w-screen flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black"
+    class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-screen px-2 py-3 bg-black navbar-expand-lg"
   >
     <div
-      class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+      class="container flex flex-wrap items-center justify-between px-4 mx-auto"
     >
       <div
-        class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start"
       >
         <router-link
           id="homepage_link"
-          class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
+          class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-no-wrap"
           to="/"
           >Wayne Music Club</router-link
         >
         <button
-          class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+          class="block px-3 py-1 text-xl leading-none bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
           type="button"
           v-on:click="toggleNavbar()"
         >
@@ -24,76 +24,86 @@
       </div>
       <div
         id="menu"
-        class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none opacity-100"
+        class="items-center flex-grow bg-white opacity-100 lg:flex lg:bg-transparent lg:shadow-none"
         :class="{
           hidden: !showMenu,
           block: showMenu
         }"
       >
-        <ul class="flex flex-col lg:flex-row list-none mr-auto"></ul>
-        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+        <ul class="flex flex-col mr-auto list-none lg:flex-row"></ul>
+        <ul class="flex flex-col list-none lg:flex-row lg:ml-auto">
           <li class="flex items-center">
             <router-link
-              class="text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold w-full"
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
               to="/announcements"
               title="Announcements"
             >
-              <i class="fas fa-bullhorn text-2xl leading-lg mr-2"></i>
-              <span class="lg:hidden inline-block ml-2">Announcements</span>
+              <i class="mr-2 text-2xl fas fa-bullhorn leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden">Announcements</span>
             </router-link>
           </li>
           <li class="flex items-center">
             <router-link
-              class="text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold w-full"
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
               to="/drumbeat"
               title="Drumbeat Newsletter"
             >
-              <i class="fas fa-drum text-2xl leading-lg mr-2"></i>
-              <span class="lg:hidden inline-block ml-2"
+              <i class="mr-2 text-2xl fas fa-drum leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden"
                 >Drumbeat Newsletter</span
               >
             </router-link>
           </li>
           <li class="flex items-center">
             <router-link
-              class="lg:text-white text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold w-full"
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase lg:text-white hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
               to="/events"
               title="Events & Schedule"
             >
-              <i class="fas fa-calendar-alt text-2xl leading-lg mr-2"></i>
-              <span class="lg:hidden inline-block ml-2">Events & Schedule</span>
+              <i class="mr-2 text-2xl fas fa-calendar-alt leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden">Events & Schedule</span>
             </router-link>
           </li>
           <li class="flex items-center">
             <router-link
-              class="text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold w-full"
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
+              to="/concessions"
+              title="Concessions"
+            >
+              <i class="text-2xl fas fa-hamburger leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden">Concessions</span>
+            </router-link>
+          </li>
+          <li class="flex items-center">
+            <router-link
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
               to="/photos"
               title="Photo Galleries"
             >
-              <i class="fas fa-camera text-2xl leading-lg"></i>
-              <span class="lg:hidden inline-block ml-2">Photo Galleries</span>
+              <i class="text-2xl fas fa-camera leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden">Photo Galleries</span>
             </router-link>
           </li>
           <li class="flex items-center">
             <router-link
-              class="text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold w-full"
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
               to="/videos"
               title="Videos"
             >
-              <i class="fas fa-film text-2xl leading-lg"></i>
-              <span class="lg:hidden inline-block ml-2">Videos</span>
+              <i class="text-2xl fas fa-film leading-lg"></i>
+              <span class="inline-block ml-2 lg:hidden">Videos</span>
             </router-link>
           </li>
           <li class="flex items-center">
             <button
-              class="bg-transparent text-gray-600 hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 text-xs font-bold uppercase px-4 py-2 lg:rounded lg:shadow lg:hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3 w-full lg:w-auto lg:px-2 lg:py-1 text-left"
+              class="w-full px-4 py-2 mb-3 text-xs font-bold text-left text-gray-600 uppercase bg-transparent outline-none hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:rounded lg:shadow lg:hover:shadow-md focus:outline-none lg:mr-1 lg:mb-0 lg:w-auto lg:px-2 lg:py-1"
               type="button"
               style="transition: all 0.5s ease 0s;"
               @click="toggleVideo($event, !videoOn)"
               :title="toggleVideoTitle"
             >
-              <i id="videoOnOff" class="fas fa-video-slash text-2xl"></i>
-              <span class="lg:hidden inline-block ml-2">{{
+              <i id="videoOnOff" class="text-2xl fas fa-video-slash"></i>
+              <span class="inline-block ml-2 lg:hidden">{{
                 toggleVideoTitle
               }}</span>
             </button>
@@ -180,6 +190,23 @@ export default {
 </script>
 
 <style lang="scss">
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: $link_color;
+
+    &.router-link-exact-active {
+      color: $link_color;
+    }
+
+    &:hover {
+      color: $link_color_hover;
+    }
+  }
+}
+
 nav {
   border-bottom: 0px solid #c53030;
   opacity: 0.9;

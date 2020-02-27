@@ -9,15 +9,17 @@ const routes = [
     name: "home",
     component: () => import("../views/Home.vue"),
     meta: {
-      title: "",
+      title: "Wayne High School Marching Band and Warriorettes",
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         }
       ]
     }
@@ -31,11 +33,13 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         }
       ]
     }
@@ -50,11 +54,13 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes."
         }
       ]
     }
@@ -68,11 +74,13 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes."
         }
       ]
     }
@@ -86,11 +94,13 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Videos from performances and events by the Wayne Marching Band and Warriorettes."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Videos from performances and events by the Wayne Marching Band and Warriorettes."
         }
       ]
     }
@@ -104,11 +114,11 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content: "Event calendar and schedule for the Wayne Music Club."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content: "Event calendar and schedule for the Wayne Music Club."
         }
       ]
     }
@@ -122,11 +132,11 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content: "Event calendar and schedule for the Wayne Music Club."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content: "Event calendar and schedule for the Wayne Music Club."
         }
       ]
     }
@@ -140,15 +150,18 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events."
         }
       ]
     }
   },
+
   {
     path: "/:slug",
     name: "page",
@@ -158,11 +171,13 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         },
         {
           property: "og.description",
-          content: "description of page contents"
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
         }
       ]
     }

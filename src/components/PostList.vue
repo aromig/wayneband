@@ -5,7 +5,7 @@
     <BasePagination
       :current-page="currentPage"
       :page-count="pageCount"
-      class="flex justify-center items-center text-xl"
+      class="flex items-center justify-center text-xl"
       @nextPage="pageChangeHandle('next')"
       @previousPage="pageChangeHandle('previous')"
       @loadPage="pageChangeHandle"

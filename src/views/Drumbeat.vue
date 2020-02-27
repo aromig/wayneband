@@ -2,9 +2,9 @@
   <div>
     <custom-header page-title="Drumbeat Newsletter" />
 
-    <main class="relative bg-white pt-8 pb-12">
+    <main class="relative pt-8 pb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -22,7 +22,7 @@
           polyTransform="translate(0, 10)"
         />
       </div>
-      <div class="py-4 w-1/2 mx-auto text-gray-900">
+      <div class="w-9/12 py-4 mx-auto text-gray-900">
         <Modal
           :show-modal="isModalVisible"
           class="modal"

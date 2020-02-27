@@ -2,9 +2,9 @@
   <div class="bg-white">
     <custom-header id="header" page-title="Events &amp; Schedule" />
 
-    <main id="main-body" class="relative bg-white pt-8 mb-12">
+    <main id="main-body" class="relative pt-8 mb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -22,7 +22,7 @@
           polyTransform="translate(0, 10)"
         />
       </div>
-      <div class="flex flex-col md:flex-row flex-wrap mx-auto w-10/12">
+      <div class="flex flex-col flex-wrap w-10/12 mx-auto md:flex-row">
         <div class="flex-1 max-w-full md:max-w-xs" id="eventsCalendar">
           <Calendar
             id="calendar"
@@ -32,7 +32,7 @@
             @monthChange="onMonthChanged"
           />
         </div>
-        <section id="events" class="ml-0 sm:ml-8 p-2 open-sans text-md flex-1">
+        <section id="events" class="flex-1 p-2 ml-0 sm:ml-8 open-sans text-md">
           <LoadingSpinner
             v-if="loadingEvents"
             class="mx-auto"
@@ -45,10 +45,10 @@
               v-for="event in events"
               :key="event.id"
               :id="'event-' + event.id"
-              class="events flex flex-row w-full border-t-2 mb-2"
+              class="flex flex-row w-full mb-2 border-t-2 events"
             >
               <div
-                class="event_date open-sans text-2xl text-gray-600 font-semibold"
+                class="text-2xl font-semibold text-gray-600 event_date open-sans"
               >
                 {{ event.event_short_date }}
               </div>
@@ -56,7 +56,7 @@
                 <router-link :to="'/events/' + event.slug">
                   <span class="block mt-1 text-lg" v-html="event.title"
                 /></router-link>
-                <span class="block text-gray-500 text-sm font-semibold"
+                <span class="block text-sm font-semibold text-gray-500"
                   ><i class="fas fa-map-marker-alt"></i>
                   {{ event.event_location_name }}
                   <span v-if="event.event_time" class="block lg:inline">
@@ -255,9 +255,6 @@ export default {
 .event_date {
   min-width: 6rem;
 }
-
-$link_color: #c53030;
-$link_color_hover: #f56565;
 
 .events a {
   color: $link_color;

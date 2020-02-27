@@ -2,9 +2,9 @@
   <div class="bg-white">
     <custom-header :page-title="single_post.title" />
 
-    <main class="relative bg-white pt-8 pb-12">
+    <main class="relative pt-8 pb-12 bg-white">
       <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
         style="height: 80px; transform: translateZ(0px);"
       >
         <SVGDivider
@@ -24,22 +24,27 @@
       </div>
       <section
         :id="'post-' + single_post.id"
-        class="py-4 w-9/12 lg:w-10/12 mx-auto text-gray-900"
+        class="w-10/12 py-4 mx-auto text-gray-900"
       >
-        <img
-          v-if="featured_media"
-          :src="featured_media"
-          class="w-full lg:max-w-xl mx-auto mb-6 float-right rounded-lg"
-        />
-
-        <span class="text-md font-semibold open-sans">{{
-          date_formatted
-        }}</span>
         <div
-          v-html="single_post.content"
-          id="post-content"
-          class="py-4 break-words text-lg list-none"
-        />
+          v-if="featured_media"
+          class="mx-auto md:w-6/12 md:float-right md:m-8"
+        >
+          <img
+            :src="featured_media"
+            class="border-4 border-red-800 border-solid shadow-lg"
+          />
+        </div>
+        <article class="w-full py-4 lg:1/2 md:1/2 md:pr-12">
+          <span class="block mb-4 font-semibold text-md open-sans">{{
+            date_formatted
+          }}</span>
+          <div
+            v-html="single_post.content"
+            id="post-content"
+            class="w-full text-lg break-words"
+          />
+        </article>
       </section>
     </main>
   </div>
@@ -95,11 +100,100 @@ export default {
 </script>
 
 <style lang="scss">
+$link_color: #c53030;
+$link_color_hover: #f56565;
+$text-gray-700: #4a5568;
+$text-gray-800: #2d3748;
+
 .text-shadow {
   text-shadow: 3px 3px 3px #000;
 }
 
-#post-content p {
-  margin: 1rem 0;
+article {
+  & h1,
+  h2,
+  h3 {
+    font-family: "Open Sans";
+  }
+  & article {
+    font-size: 1.25em;
+  }
+  & .wp-block-group,
+  .wp-block-image {
+    display: block;
+  }
+  & .img-center img {
+    display: block;
+    margin: 0 auto;
+  }
+  & h2 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    color: #c53030;
+  }
+  & h3 {
+    font-size: 1.5rem;
+  }
+  & p {
+    margin: 1rem 0;
+    &.signup_link {
+      margin-left: 1rem;
+      &:before {
+        color: $link_color;
+        content: "\f14b\00a0";
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.5rem;
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+      }
+    }
+  }
+  & .has-text-align-center {
+    text-align: center;
+
+    & strong {
+      color: #c53030;
+    }
+  }
+  & table {
+    display: table;
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #4a5568;
+
+    & th:not(.has-text-align-center) {
+      text-align: left;
+    }
+    & tr {
+      font-size: 1rem;
+      & :nth-child(2n) {
+        background-color: #e2e8f0;
+      }
+    }
+    & tr:nth-of-type(2n + 1) {
+      background-color: inherit;
+    }
+    & tr:nth-of-type(1) {
+      font-size: 1rem;
+      background-color: inherit;
+    }
+    & td {
+      padding-left: 2px;
+    }
+  }
+  & a {
+    color: $link_color;
+    &:hover {
+      color: $link_color_hover;
+      text-decoration: underline;
+    }
+  }
+  & hr.wp-block-separator {
+    margin: 0.5rem;
+    border: 1px solid #f53030;
+  }
 }
 </style>

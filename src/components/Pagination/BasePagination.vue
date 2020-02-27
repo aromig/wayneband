@@ -14,7 +14,7 @@
       :key="Math.floor(paginationTrigger)"
       :pageNumber="Math.floor(paginationTrigger)"
       :title="'Go to page ' + Math.floor(paginationTrigger)"
-      class="mx-2 hover:text-red-700 cursor-pointer"
+      class="relative inline-flex items-center px-4 mx-0 leading-5 cursor-pointer hover:text-red-700"
       @loadPage="onLoadPage"
     />
 

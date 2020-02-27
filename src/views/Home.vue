@@ -1,8 +1,8 @@
 <template>
-  <div class="home bg-black">
+  <div class="bg-black home">
     <header>
       <div
-        class="relative pt-16 pb-16 flex content-center items-center justify-center overflow-hidden"
+        class="relative flex items-center content-center justify-center pt-16 pb-16 overflow-hidden"
         style="min-height: 70vh"
       >
         <VideoBackground
@@ -12,31 +12,31 @@
           style="width: 177.77777778vh; min-height: 56.25vw"
           id="videoBackground"
         >
-          <span class="w-full h-full absolute colorOverlay"></span>
+          <span class="absolute w-full h-full colorOverlay"></span>
         </VideoBackground>
-        <div v-show="!useVideoBg" class=" fixed w-full h-full overflow-hidden">
+        <div v-show="!useVideoBg" class="fixed w-full h-full overflow-hidden ">
           <div
             id="backgroundImage"
             class="bg-center bg-cover"
             :style="{ 'background-image': currentImage }"
           >
-            <span class="w-full h-full absolute opacity-75 colorOverlay"></span>
+            <span class="absolute w-full h-full opacity-75 colorOverlay"></span>
           </div>
         </div>
         <div class="container relative mx-auto opacity-0" id="logo-block">
-          <div class="items-center flex flex-wrap">
-            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="flex flex-wrap items-center">
+            <div class="w-full px-4 ml-auto mr-auto text-center lg:w-6/12">
               <img
                 src="/img/wayne_warriors_logo.png"
                 class="mx-auto"
                 alt="Wayne Warriors Logo"
               />
               <h1
-                class="text-white font-semibold text-4xl antialiased text-shadow patua-one"
+                class="text-4xl antialiased font-semibold text-white text-shadow patua-one"
               >
                 Wayne High School
               </h1>
-              <h2 class="text-white font-thin text-2xl text-shadow patua-one">
+              <h2 class="text-2xl font-thin text-white text-shadow patua-one">
                 Marching Band &amp; Warriorettes
               </h2>
             </div>
