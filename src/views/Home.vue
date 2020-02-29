@@ -14,14 +14,24 @@
         >
           <span class="absolute w-full h-full colorOverlay"></span>
         </VideoBackground>
-        <div v-show="!useVideoBg" class="fixed w-full h-full overflow-hidden ">
+        <div
+          v-show="!useVideoBg"
+          class="fixed w-full h-full overflow-hidden opacity-0"
+          id="imageBackground"
+        >
+          <span
+            class="absolute z-50 w-full h-full opacity-75 colorOverlay"
+          ></span>
+          <div
+            id="nextBackgroundImage"
+            class="absolute left-0 z-40 w-full h-full bg-center bg-cover opacity-0 hide"
+            :style="{ 'background-image': nextImage }"
+          ></div>
           <div
             id="backgroundImage"
-            class="bg-center bg-cover"
+            class="w-full h-full bg-center bg-cover"
             :style="{ 'background-image': currentImage }"
-          >
-            <span class="absolute w-full h-full opacity-75 colorOverlay"></span>
-          </div>
+          ></div>
         </div>
         <div class="container relative mx-auto opacity-0" id="logo-block">
           <div class="flex flex-wrap items-center">
@@ -64,6 +74,7 @@ export default {
     return {
       bgImages: null,
       currentImage: null,
+      nextImage: null,
       useVideoBg: false,
       videoSources: wmc.bgVideos
     };
@@ -76,9 +87,17 @@ export default {
       }')`;
 
       setInterval(() => {
-        this.currentImage = `url('${
+        this.nextImage = `url('${
           this.bgImages[Math.floor(Math.random() * this.bgImages.length)]
         }')`;
+
+        const nextBgDiv = document.getElementById("nextBackgroundImage");
+        nextBgDiv.classList.remove("hide", "opacity-0");
+
+        setTimeout(() => {
+          this.currentImage = this.nextImage;
+          nextBgDiv.classList.add("hide", "opacity-0");
+        }, 3000);
       }, 10000);
     }
   },
@@ -90,8 +109,11 @@ export default {
   mounted() {
     this.initBackgroundImages();
     setTimeout(() => {
-      document.querySelector("#logo-block").classList.remove("opacity-0");
+      document.getElementById("logo-block").classList.remove("opacity-0");
     }, 1000);
+    setTimeout(() => {
+      document.getElementById("imageBackground").classList.remove("opacity-0");
+    }, 1500);
   }
 };
 </script>
@@ -101,14 +123,17 @@ export default {
   text-shadow: 3px 3px 3px #000;
 }
 
+#imageBackground,
 #logo-block {
   transition: opacity 2s ease-in;
 }
 
-#backgroundImage {
-  height: 100%;
-  width: 100%;
-  transition: background-image 1s linear;
+#nextBackgroundImage {
+  transition: opacity 2s ease-in;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 .colorOverlay {
