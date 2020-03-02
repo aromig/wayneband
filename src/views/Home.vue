@@ -12,10 +12,7 @@
           style="width: 177.77777778vh; min-height: 56.25vw"
           id="videoBackground"
         >
-          <span
-            class="absolute w-full h-full colorOverlay"
-            style="opacity: .9"
-          ></span>
+          <span class="absolute w-full h-full opacity-75 colorOverlay"></span>
         </VideoBackground>
         <div
           v-show="!useVideoBg"
