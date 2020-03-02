@@ -69,6 +69,9 @@ const routes = [
     path: "/photos/:slug",
     name: "gallery",
     component: () => import("../views/Photos.vue"),
+    props: route => ({
+      ...route.params
+    }),
     meta: {
       title: "Wayne High School Marching Band and Warriorettes",
       metaTags: [

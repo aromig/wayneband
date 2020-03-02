@@ -127,7 +127,7 @@ export default {
   methods: {
     async getVideoList(tags = [], per_page = 100, order = "desc") {
       const results = await api.getVideos(tags, per_page, order);
-      return results;
+      return results.data;
     },
     async fetchMedia(id) {
       return await api.getMedia(id);

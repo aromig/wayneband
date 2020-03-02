@@ -236,7 +236,11 @@ export default {
               : "portrait"
         };
       });
-      mediaList = media;
+      mediaList = {
+        total: response.headers["x-wp-total"],
+        totalPages: response.headers["x-wp-totalpages"],
+        data: media
+      };
     });
 
     return mediaList;
@@ -279,7 +283,11 @@ export default {
                 : "portrait"
           };
         });
-        mediaList = media;
+        mediaList = {
+          total: response.headers["x-wp-total"],
+          totalPages: response.headers["x-wp-totalpages"],
+          data: media
+        };
       });
 
     return mediaList;
@@ -386,7 +394,11 @@ export default {
           featured_media_url: ""
         };
       });
-      videoList = videos;
+      videoList = {
+        total: response.headers["x-wp-total"],
+        totalPages: response.headers["x-wp-totalpages"],
+        data: videos
+      };
     });
 
     return videoList;

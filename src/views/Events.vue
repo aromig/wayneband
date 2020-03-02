@@ -9,14 +9,14 @@
       >
         <SVGDivider
           svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
+          svgClass="absolute bottom-0 overflow-hidden z-50"
           points="2560 0 2560 200 0 200 0 150"
           polyClass="text-red-800 fill-current"
           polyTransform="translate(0, -10)"
         />
         <SVGDivider
           svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
+          svgClass="absolute bottom-0 overflow-hidden z-50"
           points="2560 0 2560 200 0 100"
           polyClass="text-white fill-current"
           polyTransform="translate(0, 10)"

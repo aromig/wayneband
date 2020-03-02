@@ -165,10 +165,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#post-content p {
-  margin: 1rem 0;
-}
-
 .gallery-bg {
   background: #a0aec0;
   background: linear-gradient(130deg, #a0aec0 0%, #4a5568 50%, #2d3748 100%);

@@ -119,10 +119,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text-shadow {
-  text-shadow: 3px 3px 3px #000;
-}
-
 #imageBackground,
 #logo-block {
   transition: opacity 2s ease-in;

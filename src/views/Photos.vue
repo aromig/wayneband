@@ -111,6 +111,9 @@ import api from "@/wp-api";
 
 export default {
   name: "photos",
+  props: {
+    gallery_data: null
+  },
   components: {
     CustomHeader,
     SVGDivider,
@@ -203,7 +206,14 @@ export default {
   },
   async created() {
     try {
-      this.gallery = await this.fetchGallery(this.$route.params.slug);
+      if (this.gallery_data) {
+        // Load from props
+        this.gallery = this.gallery_data;
+      } else {
+        // Load from fetch
+        this.gallery = await this.fetchGallery(this.$route.params.slug);
+      }
+      // Get each photo's full media data
       this.allPhotos = await this.parsePhotos(this.gallery.gallery_data);
 
       this.photos = this.getCurrentPagePhotos(

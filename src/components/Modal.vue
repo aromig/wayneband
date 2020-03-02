@@ -3,7 +3,7 @@
     <transition name="modal-fade">
       <div
         v-if="showModal"
-        class="fixed inset-0 z-50 flex items-center justify-center -m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none modal-backdrop"
+        class="fixed inset-0 flex items-center justify-center -m-4 overflow-x-hidden overflow-y-auto outline-none focus:outline-none modal-backdrop"
         v-on:click="toggleModal()"
       >
         <div
@@ -11,9 +11,9 @@
           :style="modalStyle"
         >
           <!--header-->
-          <div class="flex items-start justify-between p-1">
+          <div class="flex flex-row-reverse items-start justify-between p-1">
             <button
-              class="float-right p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none opacity-5 focus:outline-none"
+              class="p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none opacity-5 focus:outline-none"
               v-on:click="toggleModal()"
             >
               <span
@@ -34,7 +34,7 @@
               </span>
             </button>
             <slot name="title">
-              <h3 class="text-3xl font-semibold">
+              <h3 class="text-3xl font-semibold text-black">
                 {{ title }}
               </h3>
             </slot>
@@ -89,6 +89,7 @@ export default {
 <style>
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
 }
 
 .modal-fade-enter,

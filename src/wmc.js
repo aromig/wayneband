@@ -4,7 +4,7 @@ export default {
   async bgImages() {
     const bgCategory = await api.getCategory("background-rotation");
     const bgCategoryId = bgCategory.id;
-    const media = await api.getMediaByCategories([bgCategoryId], 50);
+    const media = (await api.getMediaByCategories([bgCategoryId], 50)).data;
 
     return media.map(media => media.sizes.full.source_url);
   },

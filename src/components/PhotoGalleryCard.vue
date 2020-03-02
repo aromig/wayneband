@@ -1,6 +1,12 @@
 <template>
   <div class="w-full px-3 py-3 md:w-6/12 lg:w-4/12 xl:w-3/12">
-    <router-link :to="'/photos/' + gallery.slug + '/'">
+    <router-link
+      :to="{
+        name: 'gallery',
+        path: '/photos/' + gallery.slug + '/',
+        params: { slug: gallery.slug, gallery_data: gallery }
+      }"
+    >
       <div
         class="relative w-full p-2 text-white bg-center bg-cover border-8 border-white shadow-2xl hover:border-red-800"
         style="min-height: 40vh"
