@@ -9,7 +9,7 @@ const routes = [
     name: "home",
     component: () => import("../views/Home.vue"),
     meta: {
-      title: "Wayne High School Marching Band and Warriorettes",
+      title: "",
       metaTags: [
         {
           name: "description",

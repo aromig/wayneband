@@ -25,8 +25,9 @@ export default {
   watch: {
     $route(to) {
       document.title =
-        `${to.meta.title} - Wayne High School Marching Band and Warriorettes` ||
-        "Wayne High School Marching Band and Warriorettes";
+        to.meta.title.length > 0
+          ? `${to.meta.title} - Wayne High School Marching Band and Warriorettes`
+          : "Wayne High School Marching Band and Warriorettes";
     }
   }
 };
