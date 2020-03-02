@@ -9,7 +9,7 @@ export default {
     return media.map(media => media.sizes.full.source_url);
   },
 
-  bgVideos: ["/video/wayne-v-northmont-highlights.mp4"],
+  bgVideos: ["https://wayneband.com/video/wmc_video_bg.mp4"],
 
   formatDate(post_date, type = "long") {
     let options = {};

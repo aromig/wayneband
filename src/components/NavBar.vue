@@ -102,7 +102,7 @@
               @click="toggleVideo($event, !videoOn)"
               :title="toggleVideoTitle"
             >
-              <i id="videoOnOff" class="text-2xl fas fa-video-slash"></i>
+              <i id="videoOnOff" class="text-2xl fas fa-video"></i>
               <span class="inline-block ml-2 lg:hidden">{{
                 toggleVideoTitle
               }}</span>
@@ -169,7 +169,7 @@ export default {
   mounted() {
     let videoBgPref = localStorage.getItem("videoBgPref");
     if (videoBgPref === null) {
-      localStorage.setItem("videoBgPref", false);
+      localStorage.setItem("videoBgPref", true);
     } else {
       videoBgPref = videoBgPref == "true"; // convert true string to boolean
       this.toggleVideo(event, videoBgPref);

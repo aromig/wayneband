@@ -12,7 +12,10 @@
           style="width: 177.77777778vh; min-height: 56.25vw"
           id="videoBackground"
         >
-          <span class="absolute w-full h-full colorOverlay"></span>
+          <span
+            class="absolute w-full h-full colorOverlay"
+            style="opacity: .9"
+          ></span>
         </VideoBackground>
         <div
           v-show="!useVideoBg"
@@ -75,7 +78,7 @@ export default {
       bgImages: null,
       currentImage: null,
       nextImage: null,
-      useVideoBg: false,
+      useVideoBg: true,
       videoSources: wmc.bgVideos
     };
   },
