@@ -172,7 +172,9 @@ export default {
       localStorage.setItem("videoBgPref", true);
     } else {
       videoBgPref = videoBgPref == "true"; // convert true string to boolean
-      this.toggleVideo(event, videoBgPref);
+      setTimeout(() => {
+        this.toggleVideo(event, videoBgPref);
+      }, 1000);
     }
 
     document.getElementById("homepage_link").addEventListener("click", () => {
