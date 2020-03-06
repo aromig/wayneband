@@ -139,7 +139,7 @@ export default {
           const a_timestamp = new Date(`${a.event_date} ${a.event_time_start}`);
           const b_timestamp = new Date(`${b.event_date} ${b.event_time_start}`);
 
-          return a_timestamp > b_timestamp;
+          return a_timestamp - b_timestamp;
         });
     },
     async onMonthChanged(newMonth) {
@@ -197,8 +197,12 @@ export default {
 
       const maxScrollTo = eventsCalendar.scrollHeight - calendar.clientHeight;
 
-      if (maxScrollTo <= window.scrollY) {
-        calendar.classList.add("stick_to_bottom");
+      if (document.querySelector("html").offsetWidth >= 752) {
+        if (maxScrollTo <= window.scrollY) {
+          calendar.classList.add("stick_to_bottom");
+        } else {
+          calendar.classList.remove("stick_to_bottom");
+        }
       } else {
         calendar.classList.remove("stick_to_bottom");
       }
