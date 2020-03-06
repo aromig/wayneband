@@ -10,7 +10,6 @@
       ref="video"
       :src="source"
       :type="mediaType"
-      :poster="videoPoster"
     ></video>
 
     <div class="VideoBackground__content">
@@ -32,9 +31,6 @@ export default {
     muted: {
       type: Boolean,
       default: true
-    },
-    videoPoster: {
-      type: String
     }
   },
   data() {
