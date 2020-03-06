@@ -11,6 +11,7 @@
           class="fixed h-full min-w-full overflow-hidden"
           style="width: 177.77777778vh; min-height: 56.25vw"
           id="videoBackground"
+          :videoPoster="videoPoster"
         >
           <span class="absolute w-full h-full opacity-75 colorOverlay"></span>
         </VideoBackground>
@@ -76,7 +77,8 @@ export default {
       currentImage: null,
       nextImage: null,
       useVideoBg: true,
-      videoSources: wmc.bgVideos
+      videoSources: wmc.bgVideos,
+      videoPoster: null
     };
   },
   methods: {
@@ -85,6 +87,9 @@ export default {
       this.currentImage = `url('${
         this.bgImages[Math.floor(Math.random() * this.bgImages.length)]
       }')`;
+      this.videoPoster = this.bgImages[
+        Math.floor(Math.random() * this.bgImages.length)
+      ];
 
       setInterval(() => {
         this.nextImage = `url('${
@@ -106,7 +111,7 @@ export default {
       this.useVideoBg = value;
     });
   },
-  mounted() {
+  async mounted() {
     this.initBackgroundImages();
     setTimeout(() => {
       document.getElementById("logo-block").classList.remove("opacity-0");
