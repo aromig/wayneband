@@ -46,12 +46,12 @@
               :height="currentVideo.height"
               :width="currentVideo.width"
             ></video-embed>
-
-            <div
-              class="my-4 text-3xl antialiased text-center text-red-600 videoTitle patua-one text-shadow"
-              v-html="currentVideo.title"
-            ></div>
           </div>
+
+          <div
+            class="text-3xl antialiased text-center text-red-600 videoTitle patua-one text-shadow"
+            v-html="currentVideo.title"
+          ></div>
 
           <LoadingSpinner
             v-if="loading"
@@ -64,7 +64,7 @@
 
           <div
             v-else
-            class="container z-20 flex flex-wrap justify-center p-2 mt-24 mb-20 shadow-lg videoList gallery-bg"
+            class="container z-20 flex flex-wrap justify-center p-2 mt-8 mb-20 shadow-lg videoList gallery-bg"
           >
             <div
               v-for="video in videoList"
@@ -208,15 +208,23 @@ export default {
 .gallery-card {
   height: 3.25rem;
 }
-@media (max-width: 640px) {
+@media only screen and (min-width: 640px) {
+  .videoSection > div {
+    height: 480px;
+  }
+}
+@media only screen and (max-width: 640px) {
   .gallery-card {
     height: 3rem;
   }
   .videoSection {
     min-height: 240px;
+    & > div {
+      height: 240px;
+    }
   }
 }
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .video-item {
     width: 100%;
   }
