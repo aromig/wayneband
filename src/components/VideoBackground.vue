@@ -1,7 +1,7 @@
 <template>
   <section class="VideoBackground">
     <video
-      class="video-background"
+      class="opacity-0 video-background"
       autoplay
       loop
       preload="auto"
@@ -112,7 +112,9 @@ export default {
 
           this.videoRatio = video.videoWidth / video.videoHeight;
           this.setVideoSize();
-          video.style.visibility = "visible";
+          setTimeout(() => {
+            video.classList.remove("opacity-0");
+          }, 1500);
         };
       }
 
@@ -176,8 +178,8 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  visibility: hidden;
   transform: translate(-50%, -50%);
+  transition: opacity 1s;
 }
 
 .VideoBackground__content {
@@ -186,13 +188,5 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>
