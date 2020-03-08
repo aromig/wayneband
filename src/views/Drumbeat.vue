@@ -29,7 +29,7 @@
           recent and upcoming Music Club activities.
         </article>
         <section
-          class="flex flex-wrap content-center p-2 bg-gray-500 border-4 border-red-800 shadow-lg gallery-bg"
+          class="flex flex-wrap content-center justify-center p-2 bg-gray-500 border-4 border-red-800 shadow-lg gallery-bg"
         >
           <div v-for="pdf in pdfList" :key="pdf.id">
             <a @click="showPDF(pdf)" class="cursor-pointer">
