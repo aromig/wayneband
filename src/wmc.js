@@ -9,7 +9,9 @@ export default {
     return media.map(media => media.sizes.full.source_url);
   },
 
-  bgVideos: ["https://wayneband.com/video/wmc_video_bg.mp4"],
+  bgVideos: [
+    "https://drive.google.com/u/0/uc?id=11h6OevccipLkqBtXL5rYbxLqZWBMGFfW&export=download"
+  ],
 
   formatDate(post_date, type = "long") {
     let options = {};
