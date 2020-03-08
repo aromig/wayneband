@@ -1,21 +1,46 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+## Force HTTPS
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteBase /
-RewriteCond ${HTTP_HOST} ^(www.)?wayneband.com$
-RewriteCond ${REQUEST_URI} !^(/wp-.*)
+
+## If index.html, just do it
+
+RewriteRule ^(index\.html|)$ - [L]
+
+## Dont know why the below line
+##   RewriteCond %{REQUEST_FILENAME} !-f
+## below wasnt working for these folders
+## but implicitly checking for it worked.
+
+RewriteCond %{REQUEST_URI} ^/(css|js|img|video|fonts)/
+RewriteRule . - [L]
+
+## Send everything except /wp-* (wp-admin, wp-json, wp-content)
+## to index.html (needed for vue router history mode)
+
+RewriteCond %{HTTP_HOST} ^(www.)?wayneband.com$
+RewriteCond %{REQUEST_URI} !^/wp-.*
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 
+## For wp-admin, wp-content etc (that have a folder)
+
 RewriteCond %{HTTP_HOST} ^(www.)?wayneband.com$
 RewriteCond %{REQUEST_URI} !^/wordpress/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /wordpress/$1
+RewriteCond %{REQUEST_URI} !^/wp-json
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /wordpress/$1 [L]
+
+## For WP REST API
+
 RewriteCond %{HTTP_HOST} ^(www.)?wayneband.com$
-RewriteRule ^(/)?$ wordpress/index.php [L] 
+RewriteCond %{REQUEST_URI} ^/wp-json
+RewriteRule . wordpress/index.php [L] 
 </IfModule>
