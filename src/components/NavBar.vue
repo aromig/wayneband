@@ -174,7 +174,7 @@ export default {
       videoBgPref = videoBgPref == "true"; // convert true string to boolean
       setTimeout(() => {
         this.toggleVideo(event, videoBgPref);
-      }, 1000);
+      }, 1500);
     }
 
     document.getElementById("homepage_link").addEventListener("click", () => {
