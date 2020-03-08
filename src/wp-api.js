@@ -2,7 +2,7 @@ import request from "axios";
 import mapsApi from "@/gmaps-api";
 
 export default {
-  baseUrl: "https://wayneband.com/wp-json/wp/v2",
+  baseUrl: "https://www.wayneband.com/wp-json/wp/v2",
   // acfUrl: "http://wayneband.com/wp-json/acf/v1",
 
   async getPage(slug) {
