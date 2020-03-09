@@ -107,6 +107,7 @@ export default {
     });
   },
   mounted() {
+    this.useVideoBg = this.$route.params.bgVideo;
     this.initBackgroundImages();
     setTimeout(() => {
       document.getElementById("logo-block").classList.remove("opacity-0");

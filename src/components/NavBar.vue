@@ -11,7 +11,7 @@
         <router-link
           id="homepage_link"
           class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-no-wrap"
-          to="/"
+          :to="{ name: 'home', path: '/', params: { bgVideo: videoOn } }"
           >Wayne Music Club</router-link
         >
         <button
@@ -171,7 +171,7 @@ export default {
     if (videoBgPref === null) {
       localStorage.setItem("videoBgPref", true);
     } else {
-      videoBgPref = videoBgPref == "true"; // convert true string to boolean
+      videoBgPref = videoBgPref == true; // convert string to boolean
       setTimeout(() => {
         this.toggleVideo(event, videoBgPref);
       }, 1500);
