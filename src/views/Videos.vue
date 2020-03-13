@@ -205,18 +205,12 @@ export default {
   background: linear-gradient(130deg, #a0aec0 0%, #4a5568 50%, #2d3748 100%);
 }
 
-.gallery-card {
-  height: 3.25rem;
-}
 @media only screen and (min-width: 640px) {
   .videoSection > div {
     height: 480px;
   }
 }
 @media only screen and (max-width: 640px) {
-  .gallery-card {
-    height: 3rem;
-  }
   .videoSection {
     min-height: 240px;
     & > div {
