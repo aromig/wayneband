@@ -155,4 +155,8 @@ input #search {
   width: 100%;
   height: 100%;
 }
+ul.wp-block-latest-posts li time {
+  font-size: smaller;
+  margin-left: 1rem;
+}
 </style>
