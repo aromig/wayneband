@@ -93,12 +93,12 @@ export default {
     return pageList;
   },
 
-  async getPosts(page = 1, perPage = 10) {
+  async getPosts(page = 1, perPage = 10, keywords = "") {
     let postList = {};
 
     request.defaults.baseURL = this.baseUrl;
     await request
-      .get(`/posts?page=${page}&per_page=${perPage}`)
+      .get(`/posts?page=${page}&per_page=${perPage}&search=${keywords}`)
       .then(response => {
         const results = response.data;
         const posts = {

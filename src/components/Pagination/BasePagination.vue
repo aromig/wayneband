@@ -12,8 +12,9 @@
     <BasePaginationTrigger
       v-for="paginationTrigger in paginationTriggers"
       :key="Math.floor(paginationTrigger)"
-      :pageNumber="Math.floor(paginationTrigger)"
+      :page-number="Math.floor(paginationTrigger)"
       :title="'Go to page ' + Math.floor(paginationTrigger)"
+      :current-page="currentPage"
       class="relative inline-flex items-center px-4 mx-0 leading-5 cursor-pointer hover:text-red-700"
       @loadPage="onLoadPage"
     />
@@ -67,6 +68,10 @@ export default {
       const visiblePagesThreshold = (visiblePagesCount - 1) / 2;
       const paginationTriggersArray = Array(this.visiblePagesCount - 1).fill(0);
 
+      if (visiblePagesCount == 1) {
+        return [1];
+      }
+
       // The selected page number is smaller than half of the list width
       if (currentPage <= visiblePagesThreshold + 1) {
         paginationTriggersArray[0] = 1;
@@ -75,7 +80,6 @@ export default {
             return paginationTriggersArray[0] + index;
           }
         );
-
         paginationTriggers.push(pageCount);
         return paginationTriggers;
       }

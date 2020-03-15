@@ -1,14 +1,35 @@
 <template>
   <div id="posts" class="py-20 border-none md:border-solid">
+    <input
+      type="text"
+      id="search"
+      placeholder="Filter posts"
+      class="block w-9/12 px-4 mx-auto text-xl border-2 border-gray-400 shadow-lg focus:border-red-400"
+      @keyup="searchHandler"
+      @keydown="clearSearchHandlerTimeout"
+      v-model="filterPosts"
+    />
+
+    <BasePagination
+      :current-page="currentPage"
+      :page-count="pageCount"
+      :visible-pages-count="visiblePages"
+      class="flex items-center justify-center mt-8 text-xl"
+      @nextPage="pageChangeHandler('next')"
+      @previousPage="pageChangeHandler('previous')"
+      @loadPage="pageChangeHandler"
+    />
+
     <PostItem v-for="post in posts" :key="post.id" :post="post" />
 
     <BasePagination
       :current-page="currentPage"
       :page-count="pageCount"
+      :visible-pages-count="visiblePages"
       class="flex items-center justify-center text-xl"
-      @nextPage="pageChangeHandle('next')"
-      @previousPage="pageChangeHandle('previous')"
-      @loadPage="pageChangeHandle"
+      @nextPage="pageChangeHandler('next')"
+      @previousPage="pageChangeHandler('previous')"
+      @loadPage="pageChangeHandler"
     />
   </div>
 </template>
@@ -26,22 +47,50 @@ export default {
     BasePagination
   },
   static: {
-    PostsPerPage: 5
+    PostsPerPage: 5,
+    MaxVisiblePages: 5
   },
   data() {
     return {
       posts: [],
       currentPage: 1,
-      pageCount: 0
+      pageCount: 0,
+      filterPosts: "",
+      typingTimeout: null,
+      visiblePages: this.MaxVisiblePages
     };
   },
   methods: {
-    async fetchPosts(page = 1, per_page = 10) {
-      let results = await api.getPosts(page, per_page);
+    async fetchPosts(page = 1, per_page = 10, keywords = "") {
+      let results = await api.getPosts(page, per_page, keywords);
       return results;
     },
 
-    async pageChangeHandle(value) {
+    searchHandler() {
+      clearTimeout(this.typingTimeout);
+      this.typingTimeout = setTimeout(async () => {
+        const results = await this.fetchPosts(
+          1,
+          this.$options.static.PostsPerPage,
+          this.filterPosts
+        );
+        this.posts = results.data;
+        this.currentPage = 1;
+        this.pageCount = Math.ceil(
+          results.total / this.$options.static.PostsPerPage
+        );
+        this.visiblePages = Math.min(
+          this.$options.static.MaxVisiblePages,
+          this.pageCount
+        );
+      }, 1000);
+    },
+
+    clearSearchHandlerTimeout() {
+      clearTimeout(this.typingTimeout);
+    },
+
+    async pageChangeHandler(value) {
       switch (value) {
         case "next":
           this.currentPage += 1;
@@ -56,7 +105,8 @@ export default {
 
       const results = await this.fetchPosts(
         this.currentPage,
-        this.$options.static.PostsPerPage
+        this.$options.static.PostsPerPage,
+        this.filterPosts
       );
       this.posts = results.data;
       this.pageCount = Math.ceil(

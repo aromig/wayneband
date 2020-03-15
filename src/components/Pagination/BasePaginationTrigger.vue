@@ -1,5 +1,8 @@
 <template>
-  <span class="base-pagination-trigger" @click="onClick">
+  <span v-if="!isCurrentPage" class="base-pagination-trigger" @click="onClick">
+    {{ pageNumber }}
+  </span>
+  <span v-else class="base-pagination-trigger currentPage">
     {{ pageNumber }}
   </span>
 </template>
@@ -10,6 +13,14 @@ export default {
     pageNumber: {
       type: Number,
       required: true
+    },
+    currentPage: {
+      type: Number
+    }
+  },
+  computed: {
+    isCurrentPage() {
+      return this.pageNumber == this.currentPage;
     }
   },
   methods: {
@@ -20,4 +31,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.currentPage {
+  color: #c53030;
+}
+</style>
