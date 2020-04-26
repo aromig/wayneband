@@ -8,8 +8,8 @@ const routes = [
     path: "/",
     name: "home",
     component: () => import("../views/Home.vue"),
-    props: route => ({
-      ...route.params
+    props: (route) => ({
+      ...route.params,
     }),
     meta: {
       title: "",
@@ -17,15 +17,15 @@ const routes = [
         {
           name: "description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
         },
         {
           property: "og.description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
-        }
-      ]
-    }
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+      ],
+    },
   },
   {
     path: "/*/*/*/:slug",
@@ -37,15 +37,15 @@ const routes = [
         {
           name: "description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
         },
         {
           property: "og.description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
-        }
-      ]
-    }
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+      ],
+    },
   },
 
   {
@@ -58,22 +58,22 @@ const routes = [
         {
           name: "description",
           content:
-            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes."
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes.",
         },
         {
           property: "og.description",
           content:
-            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes."
-        }
-      ]
-    }
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+      ],
+    },
   },
   {
     path: "/photos/:slug",
     name: "gallery",
     component: () => import("../views/Photos.vue"),
-    props: route => ({
-      ...route.params
+    props: (route) => ({
+      ...route.params,
     }),
     meta: {
       title: "Wayne High School Marching Band and Warriorettes",
@@ -81,15 +81,15 @@ const routes = [
         {
           name: "description",
           content:
-            "Photos from performances and events by the Wayne Marching Band and Warriorettes."
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes.",
         },
         {
           property: "og.description",
           content:
-            "Photos from performances and events by the Wayne Marching Band and Warriorettes."
-        }
-      ]
-    }
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+      ],
+    },
   },
   {
     path: "/videos",
@@ -101,15 +101,15 @@ const routes = [
         {
           name: "description",
           content:
-            "Videos from performances and events by the Wayne Marching Band and Warriorettes."
+            "Videos from performances and events by the Wayne Marching Band and Warriorettes.",
         },
         {
           property: "og.description",
           content:
-            "Videos from performances and events by the Wayne Marching Band and Warriorettes."
-        }
-      ]
-    }
+            "Videos from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+      ],
+    },
   },
   {
     path: "/events",
@@ -120,14 +120,14 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Event calendar and schedule for the Wayne Music Club."
+          content: "Event calendar and schedule for the Wayne Music Club.",
         },
         {
           property: "og.description",
-          content: "Event calendar and schedule for the Wayne Music Club."
-        }
-      ]
-    }
+          content: "Event calendar and schedule for the Wayne Music Club.",
+        },
+      ],
+    },
   },
   {
     path: "/events/:slug",
@@ -138,14 +138,14 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Event calendar and schedule for the Wayne Music Club."
+          content: "Event calendar and schedule for the Wayne Music Club.",
         },
         {
           property: "og.description",
-          content: "Event calendar and schedule for the Wayne Music Club."
-        }
-      ]
-    }
+          content: "Event calendar and schedule for the Wayne Music Club.",
+        },
+      ],
+    },
   },
   {
     path: "/drumbeat",
@@ -157,15 +157,36 @@ const routes = [
         {
           name: "description",
           content:
-            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events."
+            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events.",
         },
         {
           property: "og.description",
           content:
-            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events."
-        }
-      ]
-    }
+            "The Drumbeat is the newsletter for the Wayne Music Club, providing students and parents important information on upcoming events.",
+        },
+      ],
+    },
+  },
+
+  {
+    path: "/handbook",
+    name: "handbook",
+    component: () => import("../views/Handbook.vue"),
+    meta: {
+      title: "Wayne Bands Handbook",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+      ],
+    },
   },
 
   {
@@ -178,16 +199,16 @@ const routes = [
         {
           name: "description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
         },
         {
           property: "og.description",
           content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands."
-        }
-      ]
-    }
-  }
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+      ],
+    },
+  },
 ];
 
 const router = new VueRouter({
@@ -199,7 +220,7 @@ const router = new VueRouter({
     } else {
       return { x: 0, y: 0 };
     }
-  }
+  },
 });
 
 // This callback runs before every route change, including on page load.
@@ -209,13 +230,13 @@ router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched
     .slice()
     .reverse()
-    .find(r => r.meta && r.meta.title);
+    .find((r) => r.meta && r.meta.title);
 
   // Find the nearest route element with meta tags.
   const nearestWithMeta = to.matched
     .slice()
     .reverse()
-    .find(r => r.meta && r.meta.metaTags);
+    .find((r) => r.meta && r.meta.metaTags);
   /* const previousNearestWithMeta = from.matched
     .slice()
     .reverse()
@@ -227,17 +248,17 @@ router.beforeEach((to, from, next) => {
   // Remove any stale meta tags from the document using the key attribute we set below.
   Array.from(
     document.querySelectorAll("[data-vue-router-controlled]")
-  ).map(el => el.parentNode.removeChild(el));
+  ).map((el) => el.parentNode.removeChild(el));
 
   // Skip rendering meta tags if there are none.
   if (!nearestWithMeta) return next();
 
   // Turn the meta tag definitions into actual elements in the head.
   nearestWithMeta.meta.metaTags
-    .map(tagDef => {
+    .map((tagDef) => {
       const tag = document.createElement("meta");
 
-      Object.keys(tagDef).forEach(key => {
+      Object.keys(tagDef).forEach((key) => {
         tag.setAttribute(key, tagDef[key]);
       });
 
@@ -247,7 +268,7 @@ router.beforeEach((to, from, next) => {
       return tag;
     })
     // Add the meta tags to the document head.
-    .forEach(tag => document.head.appendChild(tag));
+    .forEach((tag) => document.head.appendChild(tag));
 
   next();
 });
