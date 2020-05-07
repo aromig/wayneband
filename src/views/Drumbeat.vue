@@ -35,6 +35,13 @@
             <a @click="showPDF(pdf)" class="cursor-pointer">
               <pdf-card :pdf-file="pdf"
             /></a>
+            <div class="flex flex-wrap justify-center w-full">
+              <a
+                :href="pdf.source_url"
+                class="text-white hover:text-red-600 hover:underline"
+                >Download PDF <i class="fas fa-file-download"
+              /></a>
+            </div>
           </div>
         </section>
         <Modal
@@ -47,9 +54,18 @@
             width: '90%',
             height: '90%',
             margin: '0 auto',
-            border: '10px solid #fff'
+            border: '10px solid #fff',
           }"
         >
+          <div slot="title">
+            <h2
+              class="text-3xl font-semibold text-red-800 hover:text-red-600 hover:underline"
+            >
+              <a :href="shownPDF"
+                >Download PDF <i class="fas fa-file-download"
+              /></a>
+            </h2>
+          </div>
           <PDFViewer slot="body" :url="shownPDF" height="100%" />
         </Modal>
       </div>
@@ -73,7 +89,7 @@ export default {
     SVGDivider,
     Modal,
     PdfCard,
-    PDFViewer
+    PDFViewer,
   },
   data() {
     return {
@@ -81,7 +97,7 @@ export default {
       pdfList: null,
       shownPDF: null,
       shownPDFTitle: null,
-      DrumbeatCategory: 5
+      DrumbeatCategory: 5,
     };
   },
   methods: {
@@ -99,11 +115,11 @@ export default {
         100
       );
       return results.data.sort((a, b) => a.title < b.title);
-    }
+    },
   },
   async mounted() {
     this.pdfList = await this.getIssues();
-  }
+  },
 };
 </script>
 
