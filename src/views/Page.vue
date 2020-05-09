@@ -57,12 +57,12 @@ export default {
   name: "Page",
   components: {
     CustomHeader,
-    SVGDivider
+    SVGDivider,
   },
   data() {
     return {
       page: {},
-      featured_media: ""
+      featured_media: "",
     };
   },
   methods: {
@@ -74,7 +74,7 @@ export default {
     },
     async fetchMedia(id) {
       return await api.getMedia(id);
-    }
+    },
   },
   async created() {
     this.page = await this.fetchData(this.$route.params.slug);
@@ -89,7 +89,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.slug = to.params.slug;
     next();
-  }
+  },
 };
 </script>
 
@@ -139,6 +139,20 @@ input #search {
     outline: 0;
     border-color: #c53030;
     box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.5);
+  }
+}
+
+.download_link {
+  margin-left: 1rem;
+  &:before {
+    color: $link_color;
+    content: "\f381\00a0";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.5rem;
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
   }
 }
 
