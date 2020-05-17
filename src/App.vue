@@ -61,15 +61,6 @@ html {
   text-shadow: 3px 3px 3px #000;
 }
 
-ol,
-ul {
-  list-style-type: disc;
-  li {
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-  }
-}
-
 article {
   font-size: 1em;
   & h1,

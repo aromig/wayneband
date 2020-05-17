@@ -57,12 +57,12 @@ export default {
   name: "Page",
   components: {
     CustomHeader,
-    SVGDivider,
+    SVGDivider
   },
   data() {
     return {
       page: {},
-      featured_media: "",
+      featured_media: ""
     };
   },
   methods: {
@@ -74,7 +74,7 @@ export default {
     },
     async fetchMedia(id) {
       return await api.getMedia(id);
-    },
+    }
   },
   async created() {
     this.page = await this.fetchData(this.$route.params.slug);
@@ -89,7 +89,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.slug = to.params.slug;
     next();
-  },
+  }
 };
 </script>
 
@@ -119,6 +119,15 @@ table {
   }
   & td {
     padding-left: 2px;
+  }
+}
+
+ol,
+ul {
+  list-style-type: disc;
+  li {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
   }
 }
 

@@ -61,13 +61,13 @@ export default {
   name: "Post",
   components: {
     CustomHeader,
-    SVGDivider,
+    SVGDivider
   },
   data() {
     return {
       single_post: {},
       date_formatted: null,
-      featured_media: "",
+      featured_media: ""
     };
   },
   methods: {
@@ -79,7 +79,7 @@ export default {
     },
     async fetchMedia(id) {
       return await api.getMedia(id);
-    },
+    }
   },
   async created() {
     this.single_post = await this.fetchData(this.$route.params.slug);
@@ -95,7 +95,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.slug = to.params.slug;
     next();
-  },
+  }
 };
 </script>
 
@@ -117,6 +117,14 @@ article {
   }
   & article {
     font-size: 1.25em;
+  }
+  & ol,
+  ul {
+    list-style-type: disc;
+    li {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
   }
   & .wp-block-group,
   .wp-block-image,
