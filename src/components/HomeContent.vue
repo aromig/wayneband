@@ -98,7 +98,7 @@
                   Important Documents
                 </h6>
                 <ul class="mt-2 mb-4 text-xl text-red-800 pages">
-                  <li v-for="doc in docs" :key="doc.id">
+                  <li v-for="doc in docs" :key="doc.id" class="ml-0">
                     <router-link :to="doc.path" class="hover:text-red-500">{{
                       doc.title
                     }}</router-link>
