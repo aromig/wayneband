@@ -32,24 +32,19 @@
             class="w-full px-4 py-2 rounded-t-lg sm:w-8/12 sm:rounded-tr-none md:rounded-l-lg"
             style="background-color: rgba(255, 255, 255, .75)"
           >
-            <span
-              class="block mb-2 text-sm font-semibold text-red-700 uppercase"
-              >Upcoming Events</span
-            >
-            <ul class="text-sm font-semibold text-gray-700 list-unstyled">
-              <li v-for="event in events" :key="event.id" class="pb-2">
-                <router-link
-                  :to="'/events/' + event.slug"
-                  v-html="event.event_date_title"
-                />
+            <span class="block mb-2 text-sm font-semibold text-red-700 uppercase">Upcoming Events</span>
+            <ul class="text-sm font-semibold text-gray-700 list-none">
+              <li v-for="event in events" :key="event.id" class="pb-2 m-0">
+                <router-link :to="'/events/' + event.slug" v-html="event.event_date_title" />
               </li>
             </ul>
             <router-link
               class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
               to="/events"
-              ><i class="text-lg fas fa-calendar-alt"></i> More
-              Events</router-link
             >
+              <i class="text-lg fas fa-calendar-alt"></i> More
+              Events
+            </router-link>
           </div>
           <div
             class="w-full py-2 rounded-b-lg sm:w-4/12 sm:rounded-bl-none md:rounded-r-lg"
@@ -57,38 +52,37 @@
           >
             <div class="flex flex-wrap mb-2 items-top">
               <div class="w-full px-2 ml-auto lg:w-10/12">
-                <span
-                  class="block mb-2 text-sm font-semibold text-red-700 uppercase"
-                  >Resources</span
-                >
-                <ul class="list-unstyled">
-                  <li>
+                <span class="block mb-2 text-sm font-semibold text-red-700 uppercase">Resources</span>
+                <ul class="list-none">
+                  <li class="m-0">
                     <a
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       href="https://www.facebook.com/groups/WayneMusicClub/"
                       target="_blank"
-                      ><i class="text-lg fab fa-facebook-square"></i> Discuss</a
                     >
+                      <i class="text-lg fab fa-facebook-square"></i> Discuss
+                    </a>
                   </li>
-                  <li>
+                  <!--li class="m-0">
                     <a
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       href="https://paypal.me/WayneMusicClub"
                       target="_blank"
                       ><i class="text-lg fab fa-paypal"></i> Pay Fees</a
                     >
-                  </li>
-                  <li>
+                  </li-->
+                  <li class="m-0">
                     <router-link
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       to="/drumbeat"
-                      ><i class="text-lg fas fa-drum"></i> Drumbeat</router-link
                     >
+                      <i class="text-lg fas fa-drum"></i> Drumbeat
+                    </router-link>
                   </li>
-                  <li>
+                  <li class="m-0">
                     <a
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
-                      href=""
+                      href
                     ></a>
                   </li>
                 </ul>
@@ -98,15 +92,11 @@
         </div>
       </div>
       <hr class="my-6 ml-auto border-red-800 md:w-4/6" />
-      <div
-        class="flex flex-wrap items-center justify-center md:justify-between"
-      >
+      <div class="flex flex-wrap items-center justify-center md:justify-between">
         <div class="w-full px-4 mx-auto text-center md:w-4/12">
           <div class="py-1 text-sm font-semibold text-gray-600">
             Copyright © {{ date }} Wayne Music Club
-            <address class="block">
-              P.O. Box 24392, Huber Heights, Ohio 45424
-            </address>
+            <address class="block">P.O. Box 24392, Huber Heights, Ohio 45424</address>
           </div>
         </div>
       </div>
