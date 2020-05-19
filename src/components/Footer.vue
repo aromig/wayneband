@@ -54,36 +54,15 @@
               <div class="w-full px-2 ml-auto lg:w-10/12">
                 <span class="block mb-2 text-sm font-semibold text-red-700 uppercase">Resources</span>
                 <ul class="list-none">
-                  <li class="m-0">
+                  <li v-for="resource in resourceLinks" :key="resource.id" class="m-0">
                     <a
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
-                      href="https://www.facebook.com/groups/WayneMusicClub/"
+                      :href="resource.hyperlink"
                       target="_blank"
                     >
-                      <i class="text-lg fab fa-facebook-square"></i> Discuss
+                      <i :class="'text-lg ' + resource.faClasses"></i>
+                      {{resource.title}}
                     </a>
-                  </li>
-                  <!--li class="m-0">
-                    <a
-                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
-                      href="https://paypal.me/WayneMusicClub"
-                      target="_blank"
-                      ><i class="text-lg fab fa-paypal"></i> Pay Fees</a
-                    >
-                  </li-->
-                  <li class="m-0">
-                    <router-link
-                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
-                      to="/drumbeat"
-                    >
-                      <i class="text-lg fas fa-drum"></i> Drumbeat
-                    </router-link>
-                  </li>
-                  <li class="m-0">
-                    <a
-                      class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
-                      href
-                    ></a>
                   </li>
                 </ul>
               </div>
@@ -118,7 +97,8 @@ export default {
     return {
       date: new Date().getFullYear(),
       events: [],
-      totalEvents: 0
+      totalEvents: 0,
+      resourceLinks: []
     };
   },
   methods: {
@@ -140,8 +120,13 @@ export default {
         };
       });
       return events;
+    },
+    async getResourceLinkList() {
+      const results = (await api.getResourceLinks()).data;
+      return results;
     }
   },
+
   async created() {
     this.events = (await this.getEventList(1, 50, "desc"))
       .filter(event => {
@@ -154,6 +139,7 @@ export default {
       .reverse()
       .slice(0, 5);
     this.totalEvents = this.events.length;
+    this.resourceLinks = await this.getResourceLinkList();
   }
 };
 </script>

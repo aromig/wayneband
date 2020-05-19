@@ -9,7 +9,7 @@ export default {
     let page = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/pages?slug=${slug}`).then(response => {
+    await request.get(`/pages?slug=${slug}`).then((response) => {
       const results = response.data[0];
 
       page = {
@@ -24,7 +24,7 @@ export default {
         link: results.link,
         slug: results.slug,
         title: results.title.rendered,
-        parent: results.parent
+        parent: results.parent,
       };
     });
 
@@ -35,7 +35,7 @@ export default {
     let post = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/posts?slug=${slug}`).then(response => {
+    await request.get(`/posts?slug=${slug}`).then((response) => {
       const results = response.data[0];
       const date = new Date(results.date);
 
@@ -53,7 +53,7 @@ export default {
         slug: results.slug,
         path: `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${
           results.slug
-        }`
+        }`,
       };
     });
 
@@ -64,12 +64,12 @@ export default {
     let pageList = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/pages?parent=${parent_id}`).then(response => {
+    await request.get(`/pages?parent=${parent_id}`).then((response) => {
       const results = response.data;
       const pages = {
         total: response.headers["x-wp-total"],
         totalPages: response.headers["x-wp-totalpages"],
-        data: results.map(item => {
+        data: results.map((item) => {
           return {
             id: item.id,
             parent: item.parent,
@@ -83,9 +83,9 @@ export default {
             guid: item.guid.rendered,
             link: item.link,
             slug: item.slug,
-            path: `/${item.slug}`
+            path: `/${item.slug}`,
           };
-        })
+        }),
       };
       pageList = pages;
     });
@@ -99,12 +99,12 @@ export default {
     request.defaults.baseURL = this.baseUrl;
     await request
       .get(`/posts?page=${page}&per_page=${perPage}&search=${keywords}`)
-      .then(response => {
+      .then((response) => {
         const results = response.data;
         const posts = {
           total: response.headers["x-wp-total"],
           totalPages: response.headers["x-wp-totalpages"],
-          data: results.map(item => {
+          data: results.map((item) => {
             const date = new Date(item.date);
             return {
               id: item.id,
@@ -119,9 +119,9 @@ export default {
               link: item.link,
               slug: item.slug,
               path: `${date.getFullYear()}/${date.getMonth() +
-                1}/${date.getDate()}/${item.slug}`
+                1}/${date.getDate()}/${item.slug}`,
             };
-          })
+          }),
         };
         postList = posts;
       });
@@ -132,12 +132,12 @@ export default {
   async getCategory(slug) {
     let category = {};
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/categories?slug=${slug}`).then(response => {
+    await request.get(`/categories?slug=${slug}`).then((response) => {
       const results = response.data[0];
       category = {
         id: results.id,
         name: results.name,
-        slug: results.slug
+        slug: results.slug,
       };
     });
 
@@ -147,7 +147,7 @@ export default {
   async getCategories() {
     let categories = [];
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/categories`).then(response => {
+    await request.get(`/categories`).then((response) => {
       const results = [...response.data];
       categories = results;
     });
@@ -159,7 +159,7 @@ export default {
     let media = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/media/${id}`).then(response => {
+    await request.get(`/media/${id}`).then((response) => {
       const results = response.data;
 
       media = {
@@ -188,7 +188,7 @@ export default {
         orientation:
           results.media_details.width >= results.media_details.height
             ? "landscape"
-            : "portrait"
+            : "portrait",
       };
     });
 
@@ -197,7 +197,7 @@ export default {
 
   async getMediaByCategories(category_ids, limit = 10) {
     let query = "/media?";
-    category_ids.forEach(id => {
+    category_ids.forEach((id) => {
       query += `categories=${id}&`;
     });
     query += `per_page=${limit}`;
@@ -205,9 +205,9 @@ export default {
     let mediaList = [];
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(query).then(response => {
+    await request.get(query).then((response) => {
       const results = response.data;
-      const media = results.map(item => {
+      const media = results.map((item) => {
         return {
           id: item.id,
           date: item.date,
@@ -233,13 +233,13 @@ export default {
           orientation:
             item.media_details.width >= item.media_details.height
               ? "landscape"
-              : "portrait"
+              : "portrait",
         };
       });
       mediaList = {
         total: response.headers["x-wp-total"],
         totalPages: response.headers["x-wp-totalpages"],
-        data: media
+        data: media,
       };
     });
 
@@ -252,9 +252,9 @@ export default {
     request.defaults.baseURL = this.baseUrl;
     await request
       .get(`/media?parent=${page_id}&per_page=${limit}`)
-      .then(response => {
+      .then((response) => {
         const results = response.data;
-        const media = results.map(item => {
+        const media = results.map((item) => {
           return {
             id: item.id,
             date: item.date,
@@ -280,13 +280,13 @@ export default {
             orientation:
               item.media_details.width >= item.media_details.height
                 ? "landscape"
-                : "portrait"
+                : "portrait",
           };
         });
         mediaList = {
           total: response.headers["x-wp-total"],
           totalPages: response.headers["x-wp-totalpages"],
-          data: media
+          data: media,
         };
       });
 
@@ -300,12 +300,12 @@ export default {
       .get(
         `/envira-gallery?page=${page}&per_page=${perPage}&orderby=date_taken&order=desc`
       )
-      .then(response => {
+      .then((response) => {
         const results = [...response.data];
         const galleries = {
           total: response.headers["x-wp-total"],
           totalPages: response.headers["x-wp-totalpages"],
-          data: results.map(item => {
+          data: results.map((item) => {
             return {
               id: item.id,
               date: item.date,
@@ -314,9 +314,9 @@ export default {
               slug: item.slug,
               title: item.title.rendered,
               gallery_data: item.gallery_data.gallery,
-              date_taken: item.acf.date_taken
+              date_taken: item.acf.date_taken,
             };
-          })
+          }),
         };
         galleryList = galleries;
       });
@@ -328,7 +328,7 @@ export default {
     let gallery = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/envira-gallery?slug=${slug}`).then(response => {
+    await request.get(`/envira-gallery?slug=${slug}`).then((response) => {
       const results = response.data[0];
       gallery = {
         id: results.id,
@@ -337,7 +337,7 @@ export default {
         guid: results.guid.rendered,
         slug: results.slug,
         title: results.title.rendered,
-        gallery_data: results.gallery_data.gallery
+        gallery_data: results.gallery_data.gallery,
       };
     });
 
@@ -348,15 +348,15 @@ export default {
     let tagList = "";
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/tags?slug=${slug}`).then(response => {
+    await request.get(`/tags?slug=${slug}`).then((response) => {
       const results = response.data;
-      const tags = results.map(item => {
+      const tags = results.map((item) => {
         return {
           id: item.id,
           name: item.name,
           slug: item.slug,
           description: item.description,
-          count: item.count
+          count: item.count,
         };
       });
       tagList = tags;
@@ -367,7 +367,7 @@ export default {
 
   async getVideos(tags = [], limit = 100, order = "desc") {
     let query = `/videos?orderby=video_date&order=${order}&`;
-    tags.forEach(id => {
+    tags.forEach((id) => {
       query += `tags=${id}&`;
     });
     query += `per_page=${limit}`;
@@ -375,9 +375,9 @@ export default {
     let videoList = [];
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(query).then(response => {
+    await request.get(query).then((response) => {
       const results = response.data;
-      const videos = results.map(item => {
+      const videos = results.map((item) => {
         return {
           id: item.id,
           date: item.date,
@@ -391,17 +391,44 @@ export default {
           width: item.acf.width,
           height: item.acf.height,
           tags: item.tags,
-          featured_media_url: ""
+          featured_media_url: "",
         };
       });
       videoList = {
         total: response.headers["x-wp-total"],
         totalPages: response.headers["x-wp-totalpages"],
-        data: videos
+        data: videos,
       };
     });
 
     return videoList;
+  },
+
+  async getResourceLinks() {
+    let query = `/resource_link?orderby=sort_order&order=asc`;
+
+    let linkList = {};
+
+    request.defaults.baseURL = this.baseUrl;
+    await request.get(query).then((response) => {
+      const results = response.data;
+      const links = {
+        total: response.headers["xp-wp-total"],
+        totalPages: response.headers["xp-wp-totalpages"],
+        data: results.map((item) => {
+          return {
+            id: item.id,
+            title: item.title.rendered,
+            hyperlink: item.acf.hyperlink,
+            sort_order: item.acf.sort_order,
+            faClasses: item.acf.fa_classes,
+          };
+        }),
+      };
+      linkList = links;
+    });
+
+    return linkList;
   },
 
   async getEvents(page = 1, perPage = 100, order = "desc") {
@@ -411,12 +438,12 @@ export default {
     let eventList = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(query).then(response => {
+    await request.get(query).then((response) => {
       const results = response.data;
       const events = {
         total: response.headers["xp-wp-total"],
         totalPages: response.headers["xp-wp-totalpages"],
-        data: results.map(item => {
+        data: results.map((item) => {
           return {
             id: item.id,
             date: item.date,
@@ -432,9 +459,9 @@ export default {
             event_time_start: item.acf.event_time_start,
             event_time_end: item.acf.event_time_end,
             event_location_name: item.acf.location_name,
-            event_location: item.acf.event_location
+            event_location: item.acf.event_location,
           };
-        })
+        }),
       };
       eventList = events;
     });
@@ -446,7 +473,7 @@ export default {
     let event = {};
 
     request.defaults.baseURL = this.baseUrl;
-    await request.get(`/events?slug=${slug}`).then(response => {
+    await request.get(`/events?slug=${slug}`).then((response) => {
       const results = response.data[0];
       event = {
         id: results.id,
@@ -466,10 +493,10 @@ export default {
         event_location: results.acf.event_location,
         event_full_address: `${results.acf.event_location.street_number} ${results.acf.event_location.street_name}, ${results.acf.event_location.city}, ${results.acf.event_location.state}`,
         event_map_url: `https://maps.google.com/maps?q=${results.acf.event_location.street_number}%20${results.acf.event_location.street_name}%2C%20${results.acf.event_location.city}%2C%20${results.acf.event_location.state}&t=&z=15&ie=UTF&iwloc=&output=embed&key=${mapsApi.mapsApiKey}`,
-        related_link: results.acf.related_link
+        related_link: results.acf.related_link,
       };
     });
 
     return event;
-  }
+  },
 };
