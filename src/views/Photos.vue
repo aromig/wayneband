@@ -2,25 +2,7 @@
   <div class="bg-white">
     <custom-header :page-title="gallery.title" />
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
+      <HeaderDivider />
 
       <section class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12">
         <LoadingSpinner
@@ -52,11 +34,7 @@
               }"
               class="bg-center bg-cover border-8 border-white shadow-2xl cursor-pointer hover:border-red-800"
             >
-              <a
-                class="inline-block w-full h-full"
-                target="_blank"
-                @click="showModal(photo)"
-              />
+              <a class="inline-block w-full h-full" target="_blank" @click="showModal(photo)" />
             </div>
           </div>
 
@@ -84,12 +62,7 @@
     >
       <div slot="title" />
 
-      <img
-        id="current_photo"
-        :src="clicked_photo.full.source_url"
-        slot="body"
-        class="object-cover"
-      />
+      <img id="current_photo" :src="clicked_photo.full.source_url" slot="body" class="object-cover" />
 
       <div
         slot="footer"
@@ -102,7 +75,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import BasePagination from "@/components/Pagination/BasePagination.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ImageModal from "@/components/ImageModal.vue";
@@ -116,7 +89,7 @@ export default {
   },
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     BasePagination,
     LoadingSpinner,
     ImageModal

@@ -3,37 +3,10 @@
     <custom-header :page-title="event.title" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
-      <section
-        :id="'event-' + event.id"
-        class="w-10/12 py-4 mx-auto text-gray-900"
-      >
-        <div
-          v-if="featured_media"
-          class="mx-auto md:w-6/12 md:float-right md:m-8"
-        >
-          <img
-            :src="featured_media"
-            class="border-4 border-red-800 border-solid shadow-lg"
-          />
+      <HeaderDivider />
+      <section :id="'event-' + event.id" class="w-10/12 py-4 mx-auto text-gray-900">
+        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
+          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
         </div>
 
         <article
@@ -47,17 +20,14 @@
         <div
           class="flex flex-col flex-wrap items-center justify-center w-full mb-6 md:flex-row lg:justify-between"
         >
-          <section
-            id="event-date-time"
-            class="font-semibold shadow-lg text-md card"
-          >
+          <section id="event-date-time" class="font-semibold shadow-lg text-md card">
             <p>When: {{ formatted_date }}</p>
             <p>
               Time:
               {{ event.event_time_start }}
-              <span v-if="event.event_time_end"
-                >to {{ event.event_time_end }}</span
-              >
+              <span
+                v-if="event.event_time_end"
+              >to {{ event.event_time_end }}</span>
             </p>
             <p>
               Where: {{ event.event_location_name }}
@@ -66,9 +36,10 @@
                   event.event_full_address !=
                     'undefined undefined, undefined, undefined'
                 "
-                ><br />
-                {{ event.event_full_address }}</span
               >
+                <br />
+                {{ event.event_full_address }}
+              </span>
             </p>
             <p v-if="event.related_link">More Info: {{ event.related_link }}</p>
           </section>
@@ -86,7 +57,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed.vue";
 
 import api from "@/wp-api";
@@ -96,7 +67,7 @@ export default {
   name: "Event",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     GoogleMapEmbed
   },
   data() {

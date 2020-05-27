@@ -3,39 +3,20 @@
     <custom-header page-title="Wayne Bands Handbook" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
+      <HeaderDivider />
       <div class="w-9/12 py-4 mx-auto text-gray-900">
         <section
           class="flex flex-wrap content-center justify-center p-2 bg-gray-500 border-4 border-red-800 shadow-lg gallery-bg"
         >
           <div v-for="pdf in handbookPDF" :key="pdf.id">
             <a @click="showPDF(pdf)" class="cursor-pointer">
-              <pdf-card :pdf-file="pdf"
-            /></a>
+              <pdf-card :pdf-file="pdf" />
+            </a>
             <div class="flex flex-wrap justify-center w-full">
-              <a
-                :href="pdf.source_url"
-                class="text-white hover:text-red-600 hover:underline"
-                >Download PDF <i class="fas fa-file-download"
-              /></a>
+              <a :href="pdf.source_url" class="text-white hover:text-red-600 hover:underline">
+                Download PDF
+                <i class="fas fa-file-download" />
+              </a>
             </div>
           </div>
         </section>
@@ -61,7 +42,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import Modal from "@/components/Modal.vue";
 import PdfCard from "@/components/PdfCard.vue";
 
@@ -72,10 +53,10 @@ export default {
   name: "Handbook",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     Modal,
     PdfCard,
-    PDFViewer,
+    PDFViewer
   },
   data() {
     return {
@@ -83,7 +64,7 @@ export default {
       handbookPDF: null,
       shownPDF: null,
       shownPDFTitle: null,
-      HandbookCategory: 78,
+      HandbookCategory: 78
     };
   },
   methods: {
@@ -98,11 +79,11 @@ export default {
       this.shownPDF = pdf.source_url;
       this.shownPDFTitle = pdf.title;
       this.isModalVisible = true;
-    },
+    }
   },
   async mounted() {
     this.handbookPDF = await this.getHandbook();
-  },
+  }
 };
 </script>
 

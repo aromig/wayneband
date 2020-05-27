@@ -2,9 +2,7 @@
   <nav
     class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-screen px-2 py-3 bg-black navbar-expand-lg"
   >
-    <div
-      class="container flex flex-wrap items-center justify-between px-4 mx-auto"
-    >
+    <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
       <div
         class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start"
       >
@@ -12,8 +10,7 @@
           id="homepage_link"
           class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-no-wrap"
           :to="{ name: 'home', path: '/', params: { bgVideo: videoOn } }"
-          >Wayne Music Club</router-link
-        >
+        >Wayne Music Club</router-link>
         <button
           class="block px-3 py-1 text-xl leading-none bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
           type="button"
@@ -30,7 +27,6 @@
           block: showMenu
         }"
       >
-        <ul class="flex flex-col mr-auto list-none lg:flex-row"></ul>
         <ul class="flex flex-col list-none lg:flex-row lg:ml-auto">
           <li class="flex items-center">
             <router-link
@@ -49,9 +45,7 @@
               title="Drumbeat Newsletter"
             >
               <i class="mr-2 text-2xl fas fa-drum leading-lg"></i>
-              <span class="inline-block ml-2 lg:hidden"
-                >Drumbeat Newsletter</span
-              >
+              <span class="inline-block ml-2 lg:hidden">Drumbeat Newsletter</span>
             </router-link>
           </li>
           <li class="flex items-center">
@@ -103,9 +97,11 @@
               :title="toggleVideoTitle"
             >
               <i id="videoOnOff" class="text-2xl fas fa-video"></i>
-              <span class="inline-block ml-2 lg:hidden">{{
+              <span class="inline-block ml-2 lg:hidden">
+                {{
                 toggleVideoTitle
-              }}</span>
+                }}
+              </span>
             </button>
           </li>
         </ul>
@@ -192,23 +188,6 @@ export default {
 </script>
 
 <style lang="scss">
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: $link_color;
-
-    &.router-link-exact-active {
-      color: $link_color;
-    }
-
-    &:hover {
-      color: $link_color_hover;
-    }
-  }
-}
-
 nav {
   border-bottom: 0px solid #c53030;
   opacity: 0.9;
@@ -225,5 +204,9 @@ nav {
 
 a {
   transition: color 0.5s ease;
+}
+
+#menu ul li {
+  margin: 0;
 }
 </style>

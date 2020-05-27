@@ -3,47 +3,18 @@
     <custom-header :page-title="single_post.title" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
-      <section
-        :id="'post-' + single_post.id"
-        class="w-10/12 py-4 mx-auto text-gray-900"
-      >
-        <div
-          v-if="featured_media"
-          class="mx-auto md:w-6/12 md:float-right md:m-8"
-        >
-          <img
-            :src="featured_media"
-            class="border-4 border-red-800 border-solid shadow-lg"
-          />
+      <HeaderDivider />
+      <section :id="'post-' + single_post.id" class="w-10/12 py-4 mx-auto text-gray-900">
+        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
+          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
         </div>
         <article class="w-full py-4 lg:1/2 md:1/2 md:pr-12">
-          <span class="block mb-4 font-semibold text-md open-sans">{{
+          <span class="block mb-4 font-semibold text-md open-sans">
+            {{
             date_formatted
-          }}</span>
-          <div
-            v-html="single_post.content"
-            id="post-content"
-            class="w-full text-lg break-words"
-          />
+            }}
+          </span>
+          <div v-html="single_post.content" id="post-content" class="w-full text-lg break-words" />
         </article>
       </section>
     </main>
@@ -52,7 +23,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 
 import api from "@/wp-api";
 import wmc from "@/wmc";
@@ -61,7 +32,7 @@ export default {
   name: "Post",
   components: {
     CustomHeader,
-    SVGDivider
+    HeaderDivider
   },
   data() {
     return {

@@ -19,9 +19,7 @@
           class="fixed w-full h-full overflow-hidden opacity-0"
           id="imageBackground"
         >
-          <span
-            class="absolute z-50 w-full h-full opacity-75 colorOverlay"
-          ></span>
+          <span class="absolute z-50 w-full h-full opacity-75 colorOverlay"></span>
           <div
             id="nextBackgroundImage"
             class="absolute left-0 z-40 w-full h-full bg-center bg-cover opacity-0 hide"
@@ -36,19 +34,13 @@
         <div class="container relative mx-auto opacity-0" id="logo-block">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 ml-auto mr-auto text-center lg:w-6/12">
-              <img
-                src="/img/wayne_warriors_logo.png"
-                class="mx-auto"
-                alt="Wayne Warriors Logo"
-              />
+              <img src="/img/wayne_warriors_logo.png" class="mx-auto" alt="Wayne Warriors Logo" />
               <h1
                 class="text-4xl antialiased font-semibold text-white text-shadow patua-one"
-              >
-                Wayne High School
-              </h1>
-              <h2 class="text-2xl font-thin text-white text-shadow patua-one">
-                Marching Band &amp; Warriorettes
-              </h2>
+              >Wayne High School</h1>
+              <h2
+                class="text-2xl font-thin text-white text-shadow patua-one"
+              >Marching Band &amp; Warriorettes</h2>
             </div>
           </div>
         </div>

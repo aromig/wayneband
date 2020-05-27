@@ -3,29 +3,8 @@
     <custom-header page-title="Photo Galleries" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
-      <div
-        id="photo_gallery"
-        class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12"
-      ></div>
+      <HeaderDivider />
+      <div id="photo_gallery" class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12"></div>
 
       <section class="pb-0 sm:px-2 md:px-16">
         <div class="container px-4 py-10 mx-auto md:px-0">
@@ -48,14 +27,8 @@
               @loadPage="pageChangeHandle"
             />
 
-            <div
-              class="flex flex-wrap justify-center p-2 bg-gray-500 shadow-lg gallery-bg"
-            >
-              <PhotoGalleryCard
-                v-for="gallery in galleries"
-                :key="gallery.id"
-                :gallery="gallery"
-              />
+            <div class="flex flex-wrap justify-center p-2 bg-gray-500 shadow-lg gallery-bg">
+              <PhotoGalleryCard v-for="gallery in galleries" :key="gallery.id" :gallery="gallery" />
             </div>
 
             <BasePagination
@@ -76,7 +49,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import BasePagination from "@/components/Pagination/BasePagination.vue";
 import PhotoGalleryCard from "@/components/PhotoGalleryCard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
@@ -87,7 +60,7 @@ export default {
   name: "PhotoGallery",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     BasePagination,
     PhotoGalleryCard,
     LoadingSpinner

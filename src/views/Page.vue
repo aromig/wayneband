@@ -3,37 +3,10 @@
     <custom-header :page-title="page.title" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
-      <section
-        :id="'page-' + page.id"
-        class="w-10/12 py-4 mx-auto text-gray-900"
-      >
-        <div
-          v-if="featured_media"
-          class="mx-auto md:w-6/12 md:float-right md:m-8"
-        >
-          <img
-            :src="featured_media"
-            class="border-4 border-red-800 border-solid shadow-lg"
-          />
+      <HeaderDivider />
+      <section :id="'page-' + page.id" class="w-10/12 py-4 mx-auto text-gray-900">
+        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
+          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
         </div>
 
         <article
@@ -48,7 +21,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 
 import api from "@/wp-api";
 import wmc from "@/wmc";
@@ -57,7 +30,7 @@ export default {
   name: "Page",
   components: {
     CustomHeader,
-    SVGDivider
+    HeaderDivider
   },
   data() {
     return {

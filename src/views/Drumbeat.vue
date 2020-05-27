@@ -3,25 +3,7 @@
     <custom-header page-title="Drumbeat Newsletter" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
+      <HeaderDivider />
       <div class="w-9/12 py-4 mx-auto text-gray-900">
         <article class="w-full py-4 text-lg break-words lg:1/2 md:pr-12">
           The Drumbeat is the official newsletter of the Wayne Music Club. We
@@ -33,21 +15,20 @@
         >
           <div v-for="pdf in pdfList" :key="pdf.id">
             <a @click="showPDF(pdf)" class="cursor-pointer">
-              <pdf-card :pdf-file="pdf"
-            /></a>
+              <pdf-card :pdf-file="pdf" />
+            </a>
             <div class="flex flex-wrap justify-center w-full">
-              <a
-                :href="pdf.source_url"
-                class="text-white hover:text-red-600 hover:underline"
-                >Download PDF <i class="fas fa-file-download"
-              /></a>
+              <a :href="pdf.source_url" class="text-white hover:text-red-600 hover:underline">
+                Download PDF
+                <i class="fas fa-file-download" />
+              </a>
             </div>
           </div>
         </section>
         <Modal
           :show-modal="isModalVisible"
           :title="shownPDFTitle"
-          class=""
+          class
           @close="closeModal"
           :modalStyle="{
             'background-color': '#ffffff',
@@ -58,12 +39,11 @@
           }"
         >
           <div slot="title">
-            <h2
-              class="text-3xl font-semibold text-red-800 hover:text-red-600 hover:underline"
-            >
-              <a :href="shownPDF"
-                >Download PDF <i class="fas fa-file-download"
-              /></a>
+            <h2 class="text-3xl font-semibold text-red-800 hover:text-red-600 hover:underline">
+              <a :href="shownPDF">
+                Download PDF
+                <i class="fas fa-file-download" />
+              </a>
             </h2>
           </div>
           <PDFViewer slot="body" :url="shownPDF" height="100%" />
@@ -75,7 +55,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import Modal from "@/components/Modal.vue";
 import PdfCard from "@/components/PdfCard.vue";
 
@@ -86,10 +66,10 @@ export default {
   name: "Drumbeat",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     Modal,
     PdfCard,
-    PDFViewer,
+    PDFViewer
   },
   data() {
     return {
@@ -97,7 +77,7 @@ export default {
       pdfList: null,
       shownPDF: null,
       shownPDFTitle: null,
-      DrumbeatCategory: 5,
+      DrumbeatCategory: 5
     };
   },
   methods: {
@@ -115,11 +95,11 @@ export default {
         100
       );
       return results.data.sort((a, b) => a.title < b.title);
-    },
+    }
   },
   async mounted() {
     this.pdfList = await this.getIssues();
-  },
+  }
 };
 </script>
 

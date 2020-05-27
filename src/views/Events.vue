@@ -3,25 +3,7 @@
     <custom-header id="header" page-title="Events &amp; Schedule" />
 
     <main id="main-body" class="relative pt-8 mb-12 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden z-50"
-          points="2560 0 2560 200 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden z-50"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
+      <HeaderDivider />
       <div class="flex flex-col flex-wrap w-10/12 mx-auto md:flex-row">
         <div class="flex-1 max-w-full md:max-w-xs" id="eventsCalendar">
           <Calendar
@@ -49,20 +31,22 @@
             >
               <div
                 class="text-2xl font-semibold text-gray-600 event_date open-sans"
-              >
-                {{ event.event_short_date }}
-              </div>
+              >{{ event.event_short_date }}</div>
               <div>
                 <router-link :to="'/events/' + event.slug">
-                  <span class="block mt-1 text-lg" v-html="event.title"
-                /></router-link>
-                <span class="block text-sm font-semibold text-gray-500"
-                  ><i class="fas fa-map-marker-alt"></i>
+                  <span class="block mt-1 text-lg" v-html="event.title" />
+                </router-link>
+                <span class="block text-sm font-semibold text-gray-500">
+                  <i class="fas fa-map-marker-alt"></i>
                   {{ event.event_location_name }}
-                  <span v-if="event.event_time" class="block lg:inline">
-                    <i class="fas fa-clock"></i> {{ event.event_time }}</span
-                  ></span
-                >
+                  <span
+                    v-if="event.event_time"
+                    class="block lg:inline"
+                  >
+                    <i class="fas fa-clock"></i>
+                    {{ event.event_time }}
+                  </span>
+                </span>
               </div>
             </li>
           </ul>
@@ -74,7 +58,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import Calendar from "@/components/Calendar.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
@@ -86,7 +70,7 @@ export default {
   name: "EventList",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     Calendar,
     LoadingSpinner
   },

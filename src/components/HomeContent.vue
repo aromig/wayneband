@@ -1,32 +1,13 @@
 <template>
   <main class="relative pt-8 bg-gray-100">
-    <div
-      class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-      style="height: 80px; transform: translateZ(0px)"
-    >
-      <SVGDivider
-        svgViewBox="0 0 2560 150"
-        svgClass="absolute bottom-0 overflow-hidden"
-        points="2560 0 2560 200 0 200 0 150"
-        polyClass="text-red-800 fill-current"
-        polyTransform="translate(0, -10)"
-      />
-
-      <SVGDivider
-        svgViewBox="0 0 2560 100"
-        svgClass="absolute bottom-0 overflow-hidden"
-        points="2560 0 2560 200 0 100"
-        polyClass="text-gray-100 fill-current"
-        polyTransform="translate(0, 10)"
-      />
-    </div>
+    <HeaderDivider />
 
     <!-- Cards -->
     <section class="pb-0">
       <div class="container px-4 mx-auto md:px-0">
         <div class="z-50 flex flex-wrap md:-mt-24">
           <!-- About -->
-          <div class="w-full px-4 my-4 text-center md:w-4/12 md:mt-16 md:px-4 ">
+          <div class="w-full px-4 my-4 text-center md:w-4/12 md:mt-16 md:px-4">
             <div class="relative flex flex-col w-full min-w-0 pb-6 break-words">
               <router-link to="/about">
                 <div class="flex-auto px-4 py-5">
@@ -35,18 +16,14 @@
                   >
                     <i class="text-5xl fas fa-info"></i>
                   </div>
-                  <h6 class="text-2xl font-semibold text-gray-700">
-                    About
-                  </h6>
-                  <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
-                    Our organization and band programs.
-                  </p>
+                  <h6 class="text-2xl font-semibold text-gray-700">About</h6>
+                  <p
+                    class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500"
+                  >Our organization and band programs.</p>
                 </div>
               </router-link>
               <span class="pages">
-                <router-link to="/contact" class="text-xl"
-                  >Contact WMC Staff &amp; Board</router-link
-                >
+                <router-link to="/contact" class="text-xl">Contact WMC Staff &amp; Board</router-link>
               </span>
             </div>
           </div>
@@ -61,23 +38,17 @@
                   >
                     <i class="text-5xl fas fa-bullhorn"></i>
                   </div>
-                  <h6 class="text-2xl font-semibold text-gray-700">
-                    Announcements
-                  </h6>
+                  <h6 class="text-2xl font-semibold text-gray-700">Announcements</h6>
                   <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
                     Latest news regarding concerts, performances, fundraisers,
                     and other information.
                   </p>
-                  <ul class="mt-2 mb-4 text-xl text-red-800 pages ">
-                    <li
-                      v-for="announcement in announcements"
-                      :key="announcement.id"
-                    >
+                  <ul class="mt-2 mb-4 text-xl text-red-800 pages">
+                    <li v-for="announcement in announcements" :key="announcement.id">
                       <router-link
                         :to="announcement.path"
                         class="hover:text-red-500"
-                        >{{ announcement.title }}</router-link
-                      >
+                      >{{ announcement.title }}</router-link>
                     </li>
                   </ul>
                 </div>
@@ -94,14 +65,14 @@
                 >
                   <i class="text-5xl fas fa-clipboard"></i>
                 </div>
-                <h6 class="text-2xl font-semibold text-gray-700">
-                  Important Documents
-                </h6>
+                <h6 class="text-2xl font-semibold text-gray-700">Important Documents</h6>
                 <ul class="mt-2 mb-4 text-xl text-red-800 pages">
-                  <li v-for="doc in docs" :key="doc.id" class="ml-0 list-none">
-                    <router-link :to="doc.path" class="hover:text-red-500">{{
+                  <li v-for="doc in docs" :key="doc.id" class="m-0 list-none">
+                    <router-link :to="doc.path" class="hover:text-red-500 md:text-sm lg:text-lg">
+                      {{
                       doc.title
-                    }}</router-link>
+                      }}
+                    </router-link>
                   </li>
                 </ul>
               </div>
@@ -125,7 +96,7 @@
 
       <SVGDivider
         svgClass="overflow-hidden absolute left-0 z-10"
-        svgStyle=""
+        svgStyle="margin: -2px"
         svgViewBox="0 0 2560 100"
         points="0 0 2560 0 0 100"
         polyClass="text-gray-100 fill-current"
@@ -138,6 +109,7 @@
 </template>
 
 <script>
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import SVGDivider from "@/components/SVGDivider.vue";
 import PostList from "@/components/PostList.vue";
 
@@ -147,6 +119,7 @@ import wmc from "@/wmc";
 export default {
   name: "HomeContent",
   components: {
+    HeaderDivider,
     SVGDivider,
     PostList
   },
@@ -200,11 +173,13 @@ export default {
   transition: background-image 1s linear;
 }
 
-.pages a {
-  color: $link_color;
-  &:hover {
-    color: $link_color_hover;
-    text-decoration: underline;
+.pages {
+  a {
+    color: $link_color;
+    &:hover {
+      color: $link_color_hover;
+      text-decoration: underline;
+    }
   }
 }
 

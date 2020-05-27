@@ -5,11 +5,12 @@
   >
     <div
       class="absolute top-0 left-0 right-0 bottom-auto z-20 w-full -mt-20 overflow-hidden pointer-events-none upward-shadow"
-      style="height: 80px; transform: translateZ(0px);"
+      style="height: 82px; transform: translateZ(0px);"
     >
       <SVGDivider
         svgViewBox="0 0 2560 150"
         svgClass="absolute bottom-0 overflow-hidden z-50"
+        svgStyle="bottom: 1px"
         points="2560 0 2560 200 0 200 0 150"
         polyClass="text-red-800 fill-current"
         polyTransform="translate(0, -10)"

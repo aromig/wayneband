@@ -3,41 +3,13 @@
     <custom-header page-title="Performance Videos" />
 
     <main class="relative pt-2 pb-10 text-gray-800 bg-white">
-      <div
-        class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
-        style="height: 80px; transform: translateZ(0px);"
-      >
-        <SVGDivider
-          svgViewBox="0 0 2560 150"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 100 0 200 0 150"
-          polyClass="text-red-800 fill-current"
-          polyTransform="translate(0, -10)"
-        />
-        <SVGDivider
-          svgViewBox="0 0 2560 100"
-          svgClass="absolute bottom-0 overflow-hidden"
-          points="2560 0 2560 200 0 100"
-          polyClass="text-white fill-current"
-          polyTransform="translate(0, 10)"
-        />
-      </div>
+      <HeaderDivider />
 
       <section class="pb-8 mt-2">
-        <div
-          class="container max-w-full px-4 mx-auto md:px-0 videoGrid md:max-w-3xl lg:max-w-4xl"
-        >
-          <div
-            class="z-30 my-12 border-4 border-red-700 border-solid videoSection"
-          >
-            <div
-              class="flex items-center justify-center h-full bg-black"
-              v-if="!videoLoaded"
-            >
-              <img
-                src="/img/wayne_warriors_logo.png"
-                alt="Wayne Warriors Logo"
-              />
+        <div class="container max-w-full px-4 mx-auto md:px-0 videoGrid md:max-w-3xl lg:max-w-4xl">
+          <div class="z-30 my-12 border-4 border-red-700 border-solid videoSection">
+            <div class="flex items-center justify-center h-full bg-black" v-if="!videoLoaded">
+              <img src="/img/wayne_warriors_logo.png" alt="Wayne Warriors Logo" />
             </div>
 
             <video-embed
@@ -80,9 +52,7 @@
                     'background-image': 'url(' + video.featured_media_url + ')'
                   }"
                 >
-                  <div
-                    class="absolute bottom-0 w-full -ml-2 text-center bg-white gallery-card"
-                  >
+                  <div class="absolute bottom-0 w-full -ml-2 text-center bg-white gallery-card">
                     <span
                       class="antialiased font-semibold text-gray-800 text-md open-sans"
                       v-html="video.title"
@@ -100,7 +70,7 @@
 
 <script>
 import CustomHeader from "@/components/CustomHeader.vue";
-import SVGDivider from "@/components/SVGDivider.vue";
+import HeaderDivider from "@/components/HeaderDivider.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 import api from "@/wp-api";
@@ -109,7 +79,7 @@ export default {
   name: "Videos",
   components: {
     CustomHeader,
-    SVGDivider,
+    HeaderDivider,
     LoadingSpinner
   },
   data() {
