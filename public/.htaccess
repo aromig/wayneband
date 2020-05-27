@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
+Redirect 301 /2020-2021-wayne-bands-handbook /handbook
+
 ## Force HTTPS
 
 RewriteCond %{HTTPS} off
@@ -32,7 +34,7 @@ RewriteRule . /index.html [L]
 ## For wp-admin, wp-content etc (that have a folder)
 
 RewriteCond %{HTTP_HOST} ^(www.)?wayneband.com$
-RewriteCond %{REQUEST_URI} !^/wordpress/
+## RewriteCond %{REQUEST_URI} !^/wordpress/
 RewriteCond %{REQUEST_URI} !^/wp-json
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
@@ -42,5 +44,5 @@ RewriteRule ^(.*)$ /wordpress/$1 [L]
 
 RewriteCond %{HTTP_HOST} ^(www.)?wayneband.com$
 RewriteCond %{REQUEST_URI} ^/wp-json
-RewriteRule . wordpress/index.php [L] 
+RewriteRule . wordpress/index.php [L]
 </IfModule>
