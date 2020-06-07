@@ -17,14 +17,25 @@
                     <i class="text-5xl fas fa-info"></i>
                   </div>
                   <h6 class="text-2xl font-semibold text-gray-700">About</h6>
-                  <p
-                    class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500"
-                  >Our organization and band programs.</p>
+                  <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
+                    Our organization and band programs.
+                  </p>
                 </div>
               </router-link>
-              <span class="pages">
-                <router-link to="/contact" class="text-xl">Contact WMC Staff &amp; Board</router-link>
-              </span>
+              <ul class="mb-4 text-xl text-red-800 pages">
+                <li
+                  v-for="aboutPage in aboutPages"
+                  :key="aboutPage.id"
+                  class="m-0 list-none"
+                >
+                  <router-link
+                    :to="aboutPage.path"
+                    class="hover:text-red-500 md:text-sm lg:text-lg"
+                  >
+                    {{ aboutPage.title }}</router-link
+                  >
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -38,17 +49,24 @@
                   >
                     <i class="text-5xl fas fa-bullhorn"></i>
                   </div>
-                  <h6 class="text-2xl font-semibold text-gray-700">Announcements</h6>
+                  <h6 class="text-2xl font-semibold text-gray-700">
+                    Announcements
+                  </h6>
                   <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
                     Latest news regarding concerts, performances, fundraisers,
                     and other information.
                   </p>
                   <ul class="mt-2 mb-4 text-xl text-red-800 pages">
-                    <li v-for="announcement in announcements" :key="announcement.id">
+                    <li
+                      v-for="announcement in announcements"
+                      :key="announcement.id"
+                      class="m-0 list-none"
+                    >
                       <router-link
                         :to="announcement.path"
                         class="hover:text-red-500"
-                      >{{ announcement.title }}</router-link>
+                        >{{ announcement.title }}</router-link
+                      >
                     </li>
                   </ul>
                 </div>
@@ -65,13 +83,16 @@
                 >
                   <i class="text-5xl fas fa-clipboard"></i>
                 </div>
-                <h6 class="text-2xl font-semibold text-gray-700">Important Documents</h6>
+                <h6 class="text-2xl font-semibold text-gray-700">
+                  Important Documents
+                </h6>
                 <ul class="mt-2 mb-4 text-xl text-red-800 pages">
                   <li v-for="doc in docs" :key="doc.id" class="m-0 list-none">
-                    <router-link :to="doc.path" class="hover:text-red-500 md:text-sm lg:text-lg">
-                      {{
-                      doc.title
-                      }}
+                    <router-link
+                      :to="doc.path"
+                      class="hover:text-red-500 md:text-sm lg:text-lg"
+                    >
+                      {{ doc.title }}
                     </router-link>
                   </li>
                 </ul>
@@ -128,7 +149,8 @@ export default {
       bgImages: null,
       currentImage: null,
       docs: [],
-      announcements: []
+      announcements: [],
+      aboutPages: []
     };
   },
   methods: {
@@ -152,7 +174,7 @@ export default {
 
     async fetchPagesByParentId(parent_id) {
       let results = await api.getPages(parent_id);
-      return results.data;
+      return results.data.sort((a, b) => a.title > b.title);
     },
 
     date_formatted(post_date) {
@@ -162,6 +184,7 @@ export default {
   async created() {
     this.announcements = await this.fetchPagesByParentId(490);
     this.docs = await this.fetchPagesByParentId(4725);
+    this.aboutPages = await this.fetchPagesByParentId(11);
 
     this.initBackgroundImages();
   }
