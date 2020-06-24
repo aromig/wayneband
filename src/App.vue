@@ -62,7 +62,7 @@ html {
 }
 
 article {
-  font-size: 1em;
+  font-size: 1rem;
   & h1,
   h2,
   h3 {
@@ -83,6 +83,10 @@ article {
   }
   & h3 {
     font-size: 1.5rem;
+  }
+  & h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
   }
   & p {
     margin: 1rem 0;

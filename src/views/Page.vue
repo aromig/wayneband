@@ -71,7 +71,7 @@ table {
   display: table;
   table-layout: auto;
   border-collapse: collapse;
-  width: 100%;
+  min-width: 50%;
   border: 3px solid #4a5568;
 
   & th:not(.has-text-align-center) {
@@ -79,8 +79,8 @@ table {
   }
   & tr {
     font-size: 1rem;
-    & :nth-child(2n) {
-      background-color: #e2e8f0;
+    &:nth-child(2n) {
+      background-color: $red-200;
     }
   }
   & tr:nth-of-type(2n + 1) {
@@ -93,6 +93,9 @@ table {
   & td {
     padding-left: 2px;
   }
+}
+figure.fullwidth table {
+  width: 100%;
 }
 
 ol,
@@ -154,5 +157,8 @@ input #search {
 ul.wp-block-latest-posts li time {
   font-size: smaller;
   margin-left: 1rem;
+}
+.wp-block-columns {
+  display: flex;
 }
 </style>
