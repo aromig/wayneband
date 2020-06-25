@@ -3,7 +3,7 @@
     <custom-header page-title="Wayne Bands Handbook" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
       <div class="w-9/12 py-4 mx-auto text-gray-900">
         <section
           class="flex flex-wrap content-center justify-center p-2 bg-gray-500 border-4 border-red-800 shadow-lg gallery-bg"

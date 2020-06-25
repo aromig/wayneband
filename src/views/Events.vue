@@ -3,7 +3,7 @@
     <custom-header id="header" page-title="Events &amp; Schedule" />
 
     <main id="main-body" class="relative pt-8 mb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
       <div class="flex flex-col flex-wrap w-10/12 mx-auto md:flex-row">
         <div class="flex-1 max-w-full md:max-w-xs" id="eventsCalendar">
           <Calendar

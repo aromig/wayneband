@@ -2,7 +2,7 @@
   <div class="bg-white">
     <custom-header :page-title="gallery.title" />
     <main class="relative pt-8 pb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
 
       <section class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12">
         <LoadingSpinner

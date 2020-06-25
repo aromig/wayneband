@@ -1,6 +1,6 @@
 <template>
   <div id="root">
-    <NavBar />
+    <NavBar class="no-print" />
     <div class="min-h-screen text-gray-800 bg-white">
       <keep-alive>
         <transition name="fade" mode="out-in">
@@ -8,7 +8,7 @@
         </transition>
       </keep-alive>
     </div>
-    <Footer :key="$route.params.slug" />
+    <Footer :key="$route.params.slug" class="no-print" />
   </div>
 </template>
 
@@ -167,6 +167,20 @@ article {
     &:active {
       background-color: $gray-500;
     }
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+  .print-only {
+    display: inherit;
   }
 }
 </style>

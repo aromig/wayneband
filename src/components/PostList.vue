@@ -4,7 +4,7 @@
       type="text"
       id="search"
       placeholder="Filter posts"
-      class="block w-9/12 px-4 mx-auto text-xl border-2 border-gray-400 shadow-lg focus:border-red-400"
+      class="block w-9/12 px-4 mx-auto text-xl border-2 border-gray-400 shadow-lg focus:border-red-400 no-print"
       @keyup="searchHandler"
       @keydown="clearSearchHandlerTimeout"
       v-model="filterPosts"

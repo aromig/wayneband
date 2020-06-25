@@ -1,6 +1,6 @@
 <template>
   <main class="relative pt-8 bg-gray-100">
-    <HeaderDivider />
+    <HeaderDivider class="no-print" />
 
     <!-- Cards -->
     <section class="pb-0">
@@ -17,23 +17,17 @@
                     <i class="text-5xl fas fa-info"></i>
                   </div>
                   <h6 class="text-2xl font-semibold text-gray-700">About</h6>
-                  <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
-                    Our organization and band programs.
-                  </p>
+                  <p
+                    class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500"
+                  >Our organization and band programs.</p>
                 </div>
               </router-link>
               <ul class="mb-4 text-xl text-red-800 pages">
-                <li
-                  v-for="aboutPage in aboutPages"
-                  :key="aboutPage.id"
-                  class="m-0 list-none"
-                >
+                <li v-for="aboutPage in aboutPages" :key="aboutPage.id" class="m-0 list-none">
                   <router-link
                     :to="aboutPage.path"
                     class="hover:text-red-500 md:text-sm lg:text-lg"
-                  >
-                    {{ aboutPage.title }}</router-link
-                  >
+                  >{{ aboutPage.title }}</router-link>
                 </li>
               </ul>
             </div>
@@ -49,9 +43,7 @@
                   >
                     <i class="text-5xl fas fa-bullhorn"></i>
                   </div>
-                  <h6 class="text-2xl font-semibold text-gray-700">
-                    Announcements
-                  </h6>
+                  <h6 class="text-2xl font-semibold text-gray-700">Announcements</h6>
                   <p class="mt-2 mb-4 text-xl text-gray-600 hover:text-red-500">
                     Latest news regarding concerts, performances, fundraisers,
                     and other information.
@@ -65,8 +57,7 @@
                       <router-link
                         :to="announcement.path"
                         class="hover:text-red-500"
-                        >{{ announcement.title }}</router-link
-                      >
+                      >{{ announcement.title }}</router-link>
                     </li>
                   </ul>
                 </div>
@@ -83,17 +74,13 @@
                 >
                   <i class="text-5xl fas fa-clipboard"></i>
                 </div>
-                <h6 class="text-2xl font-semibold text-gray-700">
-                  Important Documents
-                </h6>
+                <h6 class="text-2xl font-semibold text-gray-700">Important Documents</h6>
                 <ul class="mt-2 mb-4 text-xl text-red-800 pages">
                   <li v-for="doc in docs" :key="doc.id" class="m-0 list-none">
                     <router-link
                       :to="doc.path"
                       class="hover:text-red-500 md:text-sm lg:text-lg"
-                    >
-                      {{ doc.title }}
-                    </router-link>
+                    >{{ doc.title }}</router-link>
                   </li>
                 </ul>
               </div>
@@ -122,6 +109,7 @@
         points="0 0 2560 0 0 100"
         polyClass="text-gray-100 fill-current"
         polyStyle="box-shadow: inset 0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+        class="no-print"
       />
 
       <PostList class="text-gray-800 bg-white" />

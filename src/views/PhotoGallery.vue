@@ -3,7 +3,7 @@
     <custom-header page-title="Photo Galleries" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
       <div id="photo_gallery" class="w-9/12 py-4 mx-auto text-gray-900 lg:w-10/12"></div>
 
       <section class="pb-0 sm:px-2 md:px-16">

@@ -3,7 +3,7 @@
     <custom-header :page-title="single_post.title" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
       <section :id="'post-' + single_post.id" class="w-10/12 py-4 mx-auto text-gray-900">
         <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
           <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />

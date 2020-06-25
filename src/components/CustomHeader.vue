@@ -1,13 +1,10 @@
 <template>
   <header>
     <div
-      class="relative flex items-center content-center justify-center pt-16 pb-32 bg-black"
+      class="relative flex items-center content-center justify-center pt-16 pb-32 bg-black no-print"
       style="min-height: 40vh"
     >
-      <div
-        id="imageBackground"
-        class="absolute top-0 w-full h-full overflow-hidden opacity-0"
-      >
+      <div id="imageBackground" class="absolute top-0 w-full h-full overflow-hidden opacity-0">
         <span
           class="absolute flex flex-col items-center justify-center w-full h-full opacity-75 colorOverlay"
         >
@@ -22,6 +19,12 @@
           :style="{ 'background-image': currentImage }"
         ></div>
       </div>
+    </div>
+    <div class="print-only">
+      <h1
+        class="w-full text-4xl font-semibold text-center text-red-400 md:text-5xl patua-one"
+        v-html="PageTitle"
+      ></h1>
     </div>
   </header>
 </template>

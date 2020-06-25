@@ -3,7 +3,7 @@
     <custom-header page-title="Drumbeat Newsletter" />
 
     <main class="relative pt-8 pb-12 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
       <div class="w-9/12 py-4 mx-auto text-gray-900">
         <article class="w-full py-4 text-lg break-words lg:1/2 md:pr-12">
           The Drumbeat is the official newsletter of the Wayne Music Club. We

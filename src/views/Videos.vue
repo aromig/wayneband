@@ -3,7 +3,7 @@
     <custom-header page-title="Performance Videos" />
 
     <main class="relative pt-2 pb-10 text-gray-800 bg-white">
-      <HeaderDivider />
+      <HeaderDivider class="no-print" />
 
       <section class="pb-8 mt-2">
         <div class="container max-w-full px-4 mx-auto md:px-0 videoGrid md:max-w-3xl lg:max-w-4xl">
