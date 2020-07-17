@@ -161,4 +161,29 @@ ul.wp-block-latest-posts li time {
 .wp-block-columns {
   display: flex;
 }
+
+figure.wp-block-gallery {
+  max-width: 100%;
+  ul.blocks-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    li {
+      margin: auto;
+    }
+  }
+  &.columns-1 ul.blocks-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  &.columns-2 ul.blocks-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &.columns-3 ul.blocks-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &.columns-4 ul.blocks-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 </style>
