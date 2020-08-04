@@ -127,7 +127,7 @@
             >
               <i
                 id="videoOnOff"
-                class="text-2xl fas fa-video leading-lg lg:w-6 w-12 text-center"
+                class="text-2xl fas fa-video-slash leading-lg lg:w-6 w-12 text-center"
               ></i>
               <span class="inline-block ml-2 lg:hidden">
                 {{ toggleVideoTitle }}
@@ -160,8 +160,8 @@ export default {
   data() {
     return {
       showMenu: false,
-      videoOn: true,
-      toggleVideoTitle: "Toggle Video Off",
+      videoOn: false,
+      toggleVideoTitle: "Toggle Video On",
     };
   },
   methods: {
@@ -170,6 +170,7 @@ export default {
     },
     toggleVideo(event, videoOn) {
       this.videoOn = videoOn;
+
       EventBus.$emit("toggle-video", this.videoOn);
 
       if (typeof Storage !== "undefined") {
@@ -192,17 +193,18 @@ export default {
       }
     },
   },
-  mounted() {
+  created() {
     let videoBgPref = localStorage.getItem("videoBgPref");
     if (videoBgPref === null) {
-      localStorage.setItem("videoBgPref", true);
+      localStorage.setItem("videoBgPref", false);
     } else {
-      videoBgPref = videoBgPref == true; // convert string to boolean
+      videoBgPref = videoBgPref == "true" ? true : false;
       setTimeout(() => {
         this.toggleVideo(event, videoBgPref);
       }, 1500);
     }
-
+  },
+  mounted() {
     document.getElementById("homepage_link").addEventListener("click", () => {
       this.showMenu = false;
     });

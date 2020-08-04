@@ -19,7 +19,9 @@
           class="fixed w-full h-full overflow-hidden opacity-0"
           id="imageBackground"
         >
-          <span class="absolute z-50 w-full h-full opacity-75 colorOverlay"></span>
+          <span
+            class="absolute z-50 w-full h-full opacity-75 colorOverlay"
+          ></span>
           <div
             id="nextBackgroundImage"
             class="absolute left-0 z-40 w-full h-full bg-center bg-cover opacity-0 hide"
@@ -34,13 +36,19 @@
         <div class="container relative mx-auto opacity-0" id="logo-block">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 ml-auto mr-auto text-center lg:w-6/12">
-              <img src="/img/wayne_warriors_logo.png" class="mx-auto" alt="Wayne Warriors Logo" />
+              <img
+                src="/img/wayne_warriors_logo.png"
+                class="mx-auto"
+                alt="Wayne Warriors Logo"
+              />
               <h1
                 class="text-4xl antialiased font-semibold text-white text-shadow patua-one"
-              >Wayne High School</h1>
-              <h2
-                class="text-2xl font-thin text-white text-shadow patua-one"
-              >Marching Band &amp; Warriorettes</h2>
+              >
+                Wayne High School
+              </h1>
+              <h2 class="text-2xl font-thin text-white text-shadow patua-one">
+                Marching Band &amp; Warriorettes
+              </h2>
             </div>
           </div>
         </div>
@@ -60,15 +68,15 @@ export default {
   name: "home",
   components: {
     HomeContent,
-    VideoBackground
+    VideoBackground,
   },
   data() {
     return {
       bgImages: null,
       currentImage: null,
       nextImage: null,
-      useVideoBg: true,
-      videoSources: wmc.bgVideos
+      useVideoBg: false,
+      videoSources: wmc.bgVideos,
     };
   },
   methods: {
@@ -91,15 +99,18 @@ export default {
           nextBgDiv.classList.add("hide", "opacity-0");
         }, 3000);
       }, 10000);
-    }
-  },
-  created() {
-    EventBus.$on("toggle-video", value => {
-      this.useVideoBg = value;
-    });
+    },
   },
   mounted() {
-    this.useVideoBg = this.$route.params.bgVideo;
+    this.useVideoBg =
+      this.$route.params.bgVideo !== undefined
+        ? this.$route.params.bgVideo
+        : localStorage.getItem("videoBgPref");
+
+    EventBus.$on("toggle-video", (value) => {
+      this.useVideoBg = value;
+    });
+
     this.initBackgroundImages();
     setTimeout(() => {
       document.getElementById("logo-block").classList.remove("opacity-0");
@@ -107,7 +118,7 @@ export default {
     setTimeout(() => {
       document.getElementById("imageBackground").classList.remove("opacity-0");
     }, 1500);
-  }
+  },
 };
 </script>
 

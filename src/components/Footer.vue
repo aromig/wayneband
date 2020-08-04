@@ -33,18 +33,23 @@
             class="w-full px-4 py-2 rounded-t-lg sm:w-8/12 sm:rounded-tr-none md:rounded-l-lg"
             style="background-color: rgba(255, 255, 255, .75)"
           >
-            <span class="block mb-2 text-sm font-semibold text-red-700 uppercase">Upcoming Events</span>
+            <span
+              class="block mb-2 text-sm font-semibold text-red-700 uppercase"
+              >Upcoming Events</span
+            >
             <ul class="text-sm font-semibold text-gray-700 list-none">
               <li v-for="event in events" :key="event.id" class="pb-2 m-0">
-                <router-link :to="'/events/' + event.slug" v-html="event.event_date_title" />
+                <router-link
+                  :to="'/events/' + event.slug"
+                  v-html="event.event_date_title"
+                />
               </li>
             </ul>
             <router-link
               class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
               to="/events"
             >
-              <i class="text-lg fas fa-calendar-alt"></i> More
-              Events
+              <i class="text-lg fas fa-calendar-alt"></i> More Events
             </router-link>
           </div>
           <div
@@ -53,16 +58,23 @@
           >
             <div class="flex flex-wrap mb-2 items-top">
               <div class="w-full px-2 ml-auto lg:w-10/12">
-                <span class="block mb-2 text-sm font-semibold text-red-700 uppercase">Resources</span>
+                <span
+                  class="block mb-2 text-sm font-semibold text-red-700 uppercase"
+                  >Resources</span
+                >
                 <ul class="list-none">
-                  <li v-for="resource in resourceLinks" :key="resource.id" class="m-0">
+                  <li
+                    v-for="resource in resourceLinks"
+                    :key="resource.id"
+                    class="m-0"
+                  >
                     <a
                       class="block pb-2 text-lg font-semibold text-gray-700 hover:text-red-800"
                       :href="resource.hyperlink"
                       target="_blank"
                     >
                       <i :class="'text-lg ' + resource.faClasses"></i>
-                      {{resource.title}}
+                      {{ resource.title }}
                     </a>
                   </li>
                 </ul>
@@ -72,11 +84,15 @@
         </div>
       </div>
       <hr class="my-6 ml-auto border-red-800 md:w-4/6" />
-      <div class="flex flex-wrap items-center justify-center md:justify-between">
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-between"
+      >
         <div class="w-full px-4 mx-auto text-center md:w-4/12">
           <div class="py-1 text-sm font-semibold text-gray-600">
             Copyright © {{ date }} Wayne Music Club
-            <address class="block">P.O. Box 24392, Huber Heights, Ohio 45424</address>
+            <address class="block">
+              P.O. Box 24392, Huber Heights, Ohio 45424
+            </address>
           </div>
         </div>
       </div>
@@ -92,20 +108,20 @@ import wmc from "@/wmc";
 export default {
   name: "Footer",
   components: {
-    SVGDivider
+    SVGDivider,
   },
   data() {
     return {
       date: new Date().getFullYear(),
       events: [],
       totalEvents: 0,
-      resourceLinks: []
+      resourceLinks: [],
     };
   },
   methods: {
     async getEventList(page = 1, per_page = 100, order = "desc") {
       const results = (await api.getEvents(page, per_page, order)).data;
-      let events = results.map(event => {
+      let events = results.map((event) => {
         return {
           id: event.id,
           title: event.title,
@@ -117,7 +133,7 @@ export default {
           event_location: event.event_location,
           event_date_title: `${wmc.formatDate(event.event_date, "short")} ${
             event.title
-          }`
+          }`,
         };
       });
       return events;
@@ -125,12 +141,12 @@ export default {
     async getResourceLinkList() {
       const results = (await api.getResourceLinks()).data;
       return results;
-    }
+    },
   },
 
   async created() {
     this.events = (await this.getEventList(1, 50, "desc"))
-      .filter(event => {
+      .filter((event) => {
         const eventDate = new Date(event.event_date);
         const today = new Date();
         const sixMonths = new Date().setMonth(today.getMonth() + 6);
@@ -141,7 +157,7 @@ export default {
       .slice(0, 5);
     this.totalEvents = this.events.length;
     this.resourceLinks = await this.getResourceLinkList();
-  }
+  },
 };
 </script>
 
