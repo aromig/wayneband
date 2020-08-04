@@ -6,38 +6,35 @@ export default {
     const bgCategoryId = bgCategory.id;
     const media = (await api.getMediaByCategories([bgCategoryId], 50)).data;
 
-    return media.map(media => media.sizes.full.source_url);
+    return media.map((media) => media.sizes.full.source_url);
   },
 
   bgVideos: [
-    "https://drive.google.com/u/0/uc?id=11h6OevccipLkqBtXL5rYbxLqZWBMGFfW&export=download"
+    "https://drive.google.com/u/0/uc?id=11h6OevccipLkqBtXL5rYbxLqZWBMGFfW&export=download",
   ],
 
   formatDate(post_date, type = "long") {
     let options = {};
     if (type == "long") {
       options = {
-        dateStyle: type,
         month: "long",
         day: "numeric",
-        year: "numeric"
+        year: "numeric",
       };
     } else if (type == "short") {
       options = {
-        dateStyle: type,
         month: "2-digit",
         day: "2-digit",
-        year: "2-digit"
+        year: "2-digit",
       };
     } else if (type == "shortest") {
       options = {
-        dateStyle: "short",
         month: "2-digit",
-        day: "2-digit"
+        day: "2-digit",
       };
     }
     return new Intl.DateTimeFormat("en-US", options).format(
       new Date(post_date)
     );
-  }
+  },
 };
