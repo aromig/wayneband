@@ -27,6 +27,24 @@
             class="w-full text-lg break-words"
           />
         </article>
+
+        <hr class="border-red-600 mb-4" />
+
+        <article>
+          <h3>Past Editions</h3>
+          <div v-for="post in bluesheet_posts.data" :key="post.id">
+            <p>
+              <span class="open-sans"
+                >{{ dateToString(post.date) }} &mdash;
+              </span>
+              <router-link
+                :to="post.path"
+                class="hover:text-red-500 open-sans"
+                v-html="post.title"
+              />
+            </p>
+          </div>
+        </article>
       </section>
     </main>
   </div>
@@ -75,7 +93,9 @@ export default {
     });
 
     console.log(this.bluesheet_posts);
-    this.single_post = await this.fetchData(this.bluesheet_posts.data[0].slug);
+    this.single_post = await this.fetchData(
+      this.bluesheet_posts.data.shift().slug
+    );
     if (this.single_post.featured_media != 0) {
       this.featured_media = (
         await this.fetchMedia(this.single_post.featured_media)
