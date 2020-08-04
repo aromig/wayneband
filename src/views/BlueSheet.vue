@@ -92,7 +92,6 @@ export default {
       return new Date(b.date) - new Date(a.date);
     });
 
-    console.log(this.bluesheet_posts);
     this.single_post = await this.fetchData(
       this.bluesheet_posts.data.shift().slug
     );
