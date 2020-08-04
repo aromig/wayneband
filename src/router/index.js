@@ -190,6 +190,27 @@ const routes = [
   },
 
   {
+    path: "/bluesheet",
+    name: "bluesheet",
+    component: () => import("../views/BlueSheet.vue"),
+    meta: {
+      title: "Blue Sheet",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "The Warrior Marching Band Weekly is published each week during the marching season to keep parents and students informed of current events within the band.  In order for it to be beneficial, students must be sure to take it home.",
+        },
+        {
+          property: "og.description",
+          content:
+            "The Warrior Marching Band Weekly is published each week during the marching season to keep parents and students informed of current events within the band.  In order for it to be beneficial, students must be sure to take it home.",
+        },
+      ],
+    },
+  },
+
+  {
     path: "/:slug",
     name: "page",
     component: () => import("../views/Page.vue"),

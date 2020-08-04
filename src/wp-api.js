@@ -129,6 +129,43 @@ export default {
     return postList;
   },
 
+  async getPostsByCategory(category, page = 1, perPage = 10, keywords = "") {
+    let postList = {};
+
+    request.defaults.baseURL = this.baseUrl;
+    await request
+      .get(
+        `/posts?page=${page}&per_page=${perPage}&categories=${category}&keywords=${keywords}`
+      )
+      .then((response) => {
+        const results = response.data;
+        const posts = {
+          total: response.headers["x-wp-total"],
+          totalPages: response.headers["x-wp-totalpages"],
+          data: results.map((item) => {
+            const date = new Date(item.date);
+            return {
+              id: item.id,
+              date: item.date,
+              date_gmt: item.date_gmt,
+              title: item.title.rendered,
+              author: item.author,
+              excerpt: item.excerpt.rendered,
+              content: item.content.rendered,
+              featured_media: item.featured_media,
+              guid: item.guid.rendered,
+              link: item.link,
+              slug: item.slug,
+              path: `${date.getFullYear()}/${date.getMonth() +
+                1}/${date.getDate()}/${item.slug}`,
+            };
+          }),
+        };
+        postList = posts;
+      });
+    return postList;
+  },
+
   async getCategory(slug) {
     let category = {};
     request.defaults.baseURL = this.baseUrl;
