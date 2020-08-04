@@ -2,7 +2,9 @@
   <nav
     class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-screen px-2 py-3 bg-black navbar-expand-lg"
   >
-    <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
+    <div
+      class="container flex flex-wrap items-center justify-between px-4 mx-auto"
+    >
       <div
         class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start"
       >
@@ -10,7 +12,8 @@
           id="homepage_link"
           class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed text-white uppercase whitespace-no-wrap"
           :to="{ name: 'home', path: '/', params: { bgVideo: videoOn } }"
-        >Wayne Music Club</router-link>
+          >Wayne Music Club</router-link
+        >
         <button
           class="block px-3 py-1 text-xl leading-none bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
           type="button"
@@ -24,7 +27,7 @@
         class="items-center flex-grow bg-white opacity-100 lg:flex lg:bg-transparent lg:shadow-none"
         :class="{
           hidden: !showMenu,
-          block: showMenu
+          block: showMenu,
         }"
       >
         <ul class="flex flex-col list-none lg:flex-row lg:ml-auto">
@@ -34,8 +37,22 @@
               to="/announcements"
               title="Announcements"
             >
-              <i class="mr-2 text-2xl fas fa-bullhorn leading-lg"></i>
+              <i
+                class="mr-2 text-2xl fas fa-bullhorn leading-lg lg:w-6 w-12 text-center lg:w-6 w-12 text-center"
+              ></i>
               <span class="inline-block ml-2 lg:hidden">Announcements</span>
+            </router-link>
+          </li>
+          <li class="flex items-center">
+            <router-link
+              class="flex items-center w-full px-3 py-4 text-xs font-bold text-gray-600 uppercase hover:text-gray-800 active:bg-gray-100 lg:hover:text-gray-300 lg:text-gray-600 lg:py-2"
+              to="/bluesheet"
+              title="Blue Sheet"
+            >
+              <i
+                class="mr-2 text-2xl fas fa-clipboard-list leading-lg lg:w-6 w-12 text-center"
+              ></i>
+              <span class="inline-block ml-2 lg:hidden">Blue Sheet</span>
             </router-link>
           </li>
           <li class="flex items-center">
@@ -44,8 +61,12 @@
               to="/drumbeat"
               title="Drumbeat Newsletter"
             >
-              <i class="mr-2 text-2xl fas fa-drum leading-lg"></i>
-              <span class="inline-block ml-2 lg:hidden">Drumbeat Newsletter</span>
+              <i
+                class="mr-2 text-2xl fas fa-drum leading-lg lg:w-6 w-12 text-center"
+              ></i>
+              <span class="inline-block ml-2 lg:hidden"
+                >Drumbeat Newsletter</span
+              >
             </router-link>
           </li>
           <li class="flex items-center">
@@ -54,7 +75,9 @@
               to="/events"
               title="Events & Schedule"
             >
-              <i class="mr-2 text-2xl fas fa-calendar-alt leading-lg"></i>
+              <i
+                class="mr-2 text-2xl fas fa-calendar-alt leading-lg lg:w-6 w-12 text-center"
+              ></i>
               <span class="inline-block ml-2 lg:hidden">Events & Schedule</span>
             </router-link>
           </li>
@@ -64,8 +87,10 @@
               to="/concessions"
               title="Concessions"
             >
-              <i class="text-2xl fas fa-hamburger leading-lg"></i>
-              <span class="inline-block ml-2 lg:hidden">Concessions</span>
+              <i
+                class="text-2xl fas fa-hamburger leading-lg lg:w-6 w-12 text-center"
+              ></i>
+              <span class="inline-block ml-4 lg:hidden">Concessions</span>
             </router-link>
           </li>
           <li class="flex items-center">
@@ -74,8 +99,10 @@
               to="/photos"
               title="Photo Galleries"
             >
-              <i class="text-2xl fas fa-camera leading-lg"></i>
-              <span class="inline-block ml-2 lg:hidden">Photo Galleries</span>
+              <i
+                class="text-2xl fas fa-camera leading-lg lg:w-6 w-12 text-center"
+              ></i>
+              <span class="inline-block ml-4 lg:hidden">Photo Galleries</span>
             </router-link>
           </li>
           <li class="flex items-center">
@@ -84,8 +111,10 @@
               to="/videos"
               title="Videos"
             >
-              <i class="text-2xl fas fa-film leading-lg"></i>
-              <span class="inline-block ml-2 lg:hidden">Videos</span>
+              <i
+                class="text-2xl fas fa-film leading-lg lg:w-6 w-12 text-center"
+              ></i>
+              <span class="inline-block ml-4 lg:hidden">Videos</span>
             </router-link>
           </li>
           <li class="flex items-center">
@@ -96,11 +125,12 @@
               @click="toggleVideo($event, !videoOn)"
               :title="toggleVideoTitle"
             >
-              <i id="videoOnOff" class="text-2xl fas fa-video"></i>
+              <i
+                id="videoOnOff"
+                class="text-2xl fas fa-video leading-lg lg:w-6 w-12 text-center"
+              ></i>
               <span class="inline-block ml-2 lg:hidden">
-                {{
-                toggleVideoTitle
-                }}
+                {{ toggleVideoTitle }}
               </span>
             </button>
           </li>
@@ -131,7 +161,7 @@ export default {
     return {
       showMenu: false,
       videoOn: true,
-      toggleVideoTitle: "Toggle Video Off"
+      toggleVideoTitle: "Toggle Video Off",
     };
   },
   methods: {
@@ -145,7 +175,7 @@ export default {
       if (typeof Storage !== "undefined") {
         localStorage.setItem("videoBgPref", this.videoOn);
       }
-    }
+    },
   },
   watch: {
     videoOn() {
@@ -160,7 +190,7 @@ export default {
         document.getElementById("videoOnOff").classList.remove("fa-video");
         this.toggleVideoTitle = "Toggle Video On";
       }
-    }
+    },
   },
   mounted() {
     let videoBgPref = localStorage.getItem("videoBgPref");
@@ -178,12 +208,12 @@ export default {
     });
 
     let menuLinks = document.querySelectorAll("#menu ul li a");
-    menuLinks.forEach(link => {
+    menuLinks.forEach((link) => {
       link.addEventListener("click", () => {
         this.showMenu = false;
       });
     });
-  }
+  },
 };
 </script>
 
