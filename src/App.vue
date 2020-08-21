@@ -22,11 +22,20 @@ export default {
     NavBar,
     Footer
   },
+  methods: {
+    decodeHtml(html) {
+      let txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    }
+  },
   watch: {
     $route(to) {
       document.title =
         to.meta.title.length > 0
-          ? `${to.meta.title} - Wayne High School Marching Band and Warriorettes`
+          ? this.decodeHtml(
+              `${to.meta.title} - Wayne High School Marching Band and Warriorettes`
+            )
           : "Wayne High School Marching Band and Warriorettes";
     }
   }
