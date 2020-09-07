@@ -108,14 +108,14 @@ import wmc from "@/wmc";
 export default {
   name: "Footer",
   components: {
-    SVGDivider,
+    SVGDivider
   },
   data() {
     return {
       date: new Date().getFullYear(),
       events: [],
       totalEvents: 0,
-      resourceLinks: [],
+      resourceLinks: []
     };
   },
   methods: {
@@ -133,7 +133,7 @@ export default {
           event_location: event.event_location,
           event_date_title: `${wmc.formatDate(event.event_date, "short")} ${
             event.title
-          }`,
+          }`
         };
       });
       return events;
@@ -141,7 +141,7 @@ export default {
     async getResourceLinkList() {
       const results = (await api.getResourceLinks()).data;
       return results;
-    },
+    }
   },
 
   async created() {
@@ -149,6 +149,7 @@ export default {
       .filter((event) => {
         const eventDate = new Date(event.event_date);
         const today = new Date();
+        today.setDate(today.getDate() - 1);
         const sixMonths = new Date().setMonth(today.getMonth() + 6);
 
         return eventDate >= today && eventDate <= sixMonths;
@@ -157,7 +158,7 @@ export default {
       .slice(0, 5);
     this.totalEvents = this.events.length;
     this.resourceLinks = await this.getResourceLinkList();
-  },
+  }
 };
 </script>
 
