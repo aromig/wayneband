@@ -16,7 +16,7 @@
     "register-service-worker": "^1.7.1",
     "tailwindcss": "^1.6.2",
     "v-video-embed": "^1.0.6",
-    "vue": "^2.6.10",
+    "vue": "^2.6.12",
     "vue-instant-pdf-viewer": "^1.0.2",
     "vue-plugin-load-script": "^1.3.0",
     "vue-router": "^3.3.4"
@@ -39,6 +39,6 @@
     "prettier": "^1.19.1",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   }
 }
