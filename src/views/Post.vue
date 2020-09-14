@@ -89,9 +89,15 @@ article {
   & article {
     font-size: 1.25em;
   }
-  & ol,
-  ul {
+  & ul {
     list-style-type: disc;
+    li {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+  & ol {
+    list-style-type: decimal;
     li {
       margin-left: 2rem;
       margin-bottom: 1rem;

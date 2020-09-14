@@ -98,9 +98,16 @@ figure.fullwidth table {
   width: 100%;
 }
 
-ol,
 ul {
   list-style-type: disc;
+  li {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+ol {
+  list-style-type: decimal;
   li {
     margin-left: 2rem;
     margin-bottom: 1rem;
