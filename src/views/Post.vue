@@ -4,17 +4,28 @@
 
     <main class="relative pt-8 pb-12 bg-white">
       <HeaderDivider class="no-print" />
-      <section :id="'post-' + single_post.id" class="w-10/12 py-4 mx-auto text-gray-900">
-        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
-          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
+      <section
+        :id="'post-' + single_post.id"
+        class="w-10/12 py-4 mx-auto text-gray-900"
+      >
+        <div
+          v-if="featured_media"
+          class="mx-auto md:w-6/12 md:float-right md:m-8"
+        >
+          <img
+            :src="featured_media"
+            class="border-4 border-red-800 border-solid shadow-lg"
+          />
         </div>
         <article class="w-full py-4 lg:1/2 md:1/2 md:pr-12">
           <span class="block mb-4 font-semibold text-md open-sans">
-            {{
-            date_formatted
-            }}
+            {{ date_formatted }}
           </span>
-          <div v-html="single_post.content" id="post-content" class="w-full text-lg break-words" />
+          <div
+            v-html="single_post.content"
+            id="post-content"
+            class="w-full text-lg break-words"
+          />
         </article>
       </section>
     </main>
@@ -219,6 +230,13 @@ article {
     &.columns-4 ul.blocks-gallery-grid {
       grid-template-columns: repeat(4, 1fr);
     }
+  }
+
+  .wp-block-quote {
+    border-left: 2px solid #999;
+    padding-left: 20px;
+    padding-right: 15px;
+    margin-left: 20px;
   }
 }
 </style>

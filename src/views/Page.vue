@@ -4,9 +4,18 @@
 
     <main class="relative pt-8 pb-12 bg-white">
       <HeaderDivider class="no-print" />
-      <section :id="'page-' + page.id" class="w-10/12 py-4 mx-auto text-gray-900">
-        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8 no-print">
-          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
+      <section
+        :id="'page-' + page.id"
+        class="w-10/12 py-4 mx-auto text-gray-900"
+      >
+        <div
+          v-if="featured_media"
+          class="mx-auto md:w-6/12 md:float-right md:m-8 no-print"
+        >
+          <img
+            :src="featured_media"
+            class="border-4 border-red-800 border-solid shadow-lg"
+          />
         </div>
 
         <article
@@ -192,5 +201,12 @@ figure.wp-block-gallery {
   &.columns-4 ul.blocks-gallery-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.wp-block-quote {
+  border-left: 2px solid #999;
+  padding-left: 20px;
+  padding-right: 15px;
+  margin-left: 20px;
 }
 </style>
