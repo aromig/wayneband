@@ -95,6 +95,8 @@ export default {
           this.currentPage = value;
           break;
       }
+            
+      this.$router.push({ path: `/photos/${this.currentPage}` })
 
       this.loading = true;
 
@@ -120,6 +122,10 @@ export default {
   },
   async created() {
     try {
+      if (this.$route.params.page) {
+        this.currentPage = Number(this.$route.params.page);
+      }
+
       const results = await this.fetchGalleries(
         this.currentPage,
         this.$options.static.GalleriesPerPage

@@ -69,8 +69,51 @@ const routes = [
     },
   },
   {
+    path: "/photos/:page",
+    name: "photo-gallery-page",
+    component: () => import("../views/PhotoGallery.vue"),
+    meta: {
+      title: "Photo Galleries",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+      ],
+    }
+  },
+  {
     path: "/photos/:slug",
     name: "gallery",
+    component: () => import("../views/Photos.vue"),
+    props: (route) => ({
+      ...route.params,
+    }),
+    meta: {
+      title: "Wayne High School Marching Band and Warriorettes",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Photos from performances and events by the Wayne Marching Band and Warriorettes.",
+        },
+      ],
+    },
+  },
+  {
+    path: "/photos/:slug/:page",
+    name: "gallery-page",
     component: () => import("../views/Photos.vue"),
     props: (route) => ({
       ...route.params,

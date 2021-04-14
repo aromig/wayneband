@@ -155,6 +155,8 @@ export default {
           break;
       }
 
+      this.$router.push({ path: `/photos/${this.$route.params.slug}/${this.currentPage}` })
+
       this.photos = this.getCurrentPagePhotos(
         this.currentPage,
         this.$options.static.PhotosPerPage
@@ -188,6 +190,10 @@ export default {
       }
       // Get each photo's full media data
       this.allPhotos = await this.parsePhotos(this.gallery.gallery_data);
+
+      if (this.$route.params.page) {
+        this.currentPage = Number(this.$route.params.page);
+      }
 
       this.photos = this.getCurrentPagePhotos(
         this.currentPage,
