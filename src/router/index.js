@@ -211,6 +211,27 @@ const routes = [
   },
 
   {
+    path: "/halftime-usa/:slug",
+    name: "halftimeusa",
+    component: () => import("../views/HalftimeUSA.vue"),
+    meta: {
+      title: "Halftime USA",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Halftime USA is a marching band festival hosted by the Wayne Music Club for over 50 years.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Halftime USA is a marching band festival hosted by the Wayne Music Club for over 50 years.",
+        },
+      ],
+    },
+  },
+
+  {
     path: "/:slug",
     name: "page",
     component: () => import("../views/Page.vue"),
