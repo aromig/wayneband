@@ -4,9 +4,18 @@
 
     <main class="relative pt-8 pb-12 bg-white">
       <HeaderDivider class="no-print" />
-      <section :id="'event-' + event.id" class="w-10/12 py-4 mx-auto text-gray-900">
-        <div v-if="featured_media" class="mx-auto md:w-6/12 md:float-right md:m-8">
-          <img :src="featured_media" class="border-4 border-red-800 border-solid shadow-lg" />
+      <section
+        :id="'event-' + event.id"
+        class="w-10/12 py-4 mx-auto text-gray-900"
+      >
+        <div
+          v-if="featured_media"
+          class="mx-auto md:w-6/12 md:float-right md:m-8"
+        >
+          <img
+            :src="featured_media"
+            class="border-4 border-red-800 border-solid shadow-lg"
+          />
         </div>
 
         <article
@@ -20,14 +29,17 @@
         <div
           class="flex flex-col flex-wrap items-center justify-center w-full mb-6 md:flex-row lg:justify-between"
         >
-          <section id="event-date-time" class="font-semibold shadow-lg text-md card">
+          <section
+            id="event-date-time"
+            class="font-semibold shadow-lg text-md card"
+          >
             <p>When: {{ formatted_date }}</p>
             <p>
               Time:
               {{ event.event_time_start }}
-              <span
-                v-if="event.event_time_end"
-              >to {{ event.event_time_end }}</span>
+              <span v-if="event.event_time_end"
+                >to {{ event.event_time_end }}</span
+              >
             </p>
             <p>
               Where: {{ event.event_location_name }}
@@ -41,7 +53,15 @@
                 {{ event.event_full_address }}
               </span>
             </p>
-            <p v-if="event.related_link">More Info: {{ event.related_link }}</p>
+            <p v-if="event.related_link">
+              For more information, please see:
+              <a
+                :href="event.related_link"
+                class="hover:text-red-500 open-sans"
+                target="_blank"
+                >{{ event.related_link }}</a
+              >
+            </p>
           </section>
 
           <google-map-embed
@@ -68,13 +88,13 @@ export default {
   components: {
     CustomHeader,
     HeaderDivider,
-    GoogleMapEmbed
+    GoogleMapEmbed,
   },
   data() {
     return {
       event: {},
       featured_media: "",
-      formatted_date: ""
+      formatted_date: "",
     };
   },
   methods: {
@@ -86,12 +106,12 @@ export default {
     },
     async fetchMedia(id) {
       return await api.getMedia(id);
-    }
+    },
   },
   watch: {
     event() {
       this.formatted_date = this.dateToString(this.event.event_date);
-    }
+    },
   },
   async created() {
     this.event = await this.fetchData(this.$route.params.slug);
@@ -106,7 +126,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.slug = to.params.slug;
     next();
-  }
+  },
 };
 </script>
 
