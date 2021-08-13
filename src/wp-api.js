@@ -600,4 +600,66 @@ export default {
 
     return event;
   },
+
+  async getSignUpEvents(page = 1, perPage = 100, order = "desc") {
+    let query = `/signups?orderby=signup_date&order=${order}`;
+    query += `&page=${page}&perPage=${perPage}`;
+
+    let eventList = {};
+
+    request.defaults.baseURL = this.baseUrl;
+    await request.get(query).then((response) => {
+      const results = response.data;
+      const events = {
+        total: response.headers["xp-wp-total"],
+        totalPages: response.headers["xp-wp-totalpages"],
+        data: results.map((item) => {
+          return {
+            id: item.id,
+            date: item.date,
+            date_gmt: item.date_gmt,
+            guid: item.guid.rendered,
+            title: item.title.rendered,
+            slug: item.slug,
+            content: item.content.rendered,
+            featured_media: item.featured_media,
+            link: item.link,
+            tags: item.tags,
+            categories: item.categories,
+            signup_link: item.acf.signup_link,
+            signup_date: item.acf.signup_date,
+          };
+        }),
+      };
+      eventList = events;
+    });
+
+    return eventList;
+  },
+
+  async getSignUpEvent(slug) {
+    let event = {};
+
+    request.defaults.baseURL = this.baseUrl;
+    await request.get(`/signups?slug=${slug}`).then((response) => {
+      const results = response.data[0];
+      event = {
+        id: results.id,
+        date: results.date,
+        date_gmt: results.date_gmt,
+        guid: results.guid.rendered,
+        title: results.title.rendered,
+        slug: results.slug,
+        content: results.content.rendered,
+        featured_media: results.featured_media,
+        link: results.link,
+        tags: results.tags,
+        categories: results.categories,
+        signup_link: results.acf.signup_link,
+        signup_date: results.acf.signup_date,
+      };
+    });
+
+    return event;
+  },
 };

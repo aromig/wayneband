@@ -20,14 +20,14 @@ export default {
   name: "wayneband",
   components: {
     NavBar,
-    Footer
+    Footer,
   },
   methods: {
     decodeHtml(html) {
       let txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
-    }
+    },
   },
   watch: {
     $route(to) {
@@ -37,8 +37,8 @@ export default {
               `${to.meta.title} - Wayne High School Marching Band and Warriorettes`
             )
           : "Wayne High School Marching Band and Warriorettes";
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -99,20 +99,21 @@ article {
   }
   & p {
     margin: 1rem 0;
-    &.signup_link {
-      margin-left: 1rem;
-      &:before {
-        color: $link_color;
-        content: "\f14b\00a0";
-        font-family: "Font Awesome 5 Free";
-        font-size: 1.5rem;
-        display: inline-block;
-        padding-right: 3px;
-        vertical-align: middle;
-        font-weight: 900;
-      }
+  }
+  .signup_link {
+    margin-left: 1rem;
+    &:before {
+      color: $link_color;
+      content: "\f14b\00a0";
+      font-family: "Font Awesome 5 Free";
+      font-size: 1.5rem;
+      display: inline-block;
+      padding-right: 3px;
+      vertical-align: middle;
+      font-weight: 900;
     }
   }
+
   & .has-text-align-center {
     text-align: center;
 

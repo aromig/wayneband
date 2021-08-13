@@ -21,6 +21,13 @@ export default {
         day: "numeric",
         year: "numeric",
       };
+    } else if (type == "daylong") {
+      options = {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      };
     } else if (type == "short") {
       options = {
         month: "2-digit",

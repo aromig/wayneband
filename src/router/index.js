@@ -86,7 +86,7 @@ const routes = [
             "Photo galleries from performances and events by the Wayne Marching Band and Warriorettes.",
         },
       ],
-    }
+    },
   },
   {
     path: "/photos/:slug",
@@ -269,6 +269,27 @@ const routes = [
           property: "og.description",
           content:
             "Halftime USA is a marching band festival hosted by the Wayne Music Club for over 50 years.",
+        },
+      ],
+    },
+  },
+
+  {
+    path: "/volunteer",
+    name: "volunteer",
+    component: () => import("../views/Volunteer.vue"),
+    meta: {
+      title: "Volunteer",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Volunteer opportunities with the Wayne Music Club including, but not limited to, concession sign ups.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Volunteer opportunities with the Wayne Music Club including, but not limited to, concession sign ups.",
         },
       ],
     },
