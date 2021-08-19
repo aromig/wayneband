@@ -6,8 +6,8 @@
       <HeaderDivider class="no-print" />
       <article class="w-10/12 py-4 mx-auto text-gray-900">
         <h2>Current Volunteer Opportunities</h2>
-        <ul v-for="signup in signup_list" :key="signup.id">
-          <li>
+        <ul>
+          <li v-for="signup in signup_list" :key="signup.id">
             <a :href="signup.signup_link" target="_blank" class="signup_link">{{
               signup.title
             }}</a>
@@ -26,6 +26,58 @@
             >
           </li>
         </ul>
+        <hr class="mt-5 border-red-600" />
+
+        <h2>Check Concession Requirements</h2>
+
+        <p>
+          Check which requirements a student has met this season in the table
+          below. This list is updated periodically as we review the concession
+          sign-up sheets from each game. If the student is a senior, they are
+          excused from the varsity football requirement. Be sure to review the
+          <a href="/concessions">Concessions</a> page for more details if you
+          have not already.
+        </p>
+
+        <input
+          id="search"
+          type="text"
+          class="border-gray-500 border-2 w-3/12 px-2 mb-4"
+          placeholder="Filter list by first name..."
+          v-model="table_search"
+          @keyup="searchTable"
+        />
+
+        <table id="concessions_credit">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Shift 1</th>
+              <th>Shift 2</th>
+              <th>Shift 3</th>
+              <th>Shift 4</th>
+              <th>Varsity FB</th>
+              <th>Varsity FB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="row in sheet"
+              :key="row._rowNumber"
+              :id="'row__' + row._rowNumber"
+            >
+              <td>{{ row["First Name"] }}</td>
+              <td>{{ row["Last Name"] }}</td>
+              <td>{{ row["1"] }}</td>
+              <td>{{ row["2"] }}</td>
+              <td>{{ row["3"] }}</td>
+              <td>{{ row["4"] }}</td>
+              <td>{{ row["Varsity FB 1"] }}</td>
+              <td>{{ row["Varisty FB 2"] }}</td>
+            </tr>
+          </tbody>
+        </table>
       </article>
     </main>
   </div>
@@ -37,6 +89,8 @@ import HeaderDivider from "@/components/HeaderDivider.vue";
 
 import api from "@/wp-api";
 import wmc from "@/wmc";
+import googleApi from "@/google-api";
+const { GoogleSpreadsheet } = require("google-spreadsheet");
 
 export default {
   name: "Volunteer",
@@ -49,6 +103,9 @@ export default {
       signup_list: null,
       concession_cat: null,
       fundraising_cat: null,
+      spreadsheet_id: "",
+      sheet: null,
+      table_search: "",
     };
   },
   methods: {
@@ -79,11 +136,40 @@ export default {
         (signup) => signup.signup_date < wmc.formatDate(new Date())
       );
     },
+    async getSpreadsheet(sheet_id) {
+      const doc = new GoogleSpreadsheet(sheet_id);
+      await doc.useApiKey(googleApi.sheetsApiKey);
+      await doc.loadInfo();
+      return await doc.sheetsByIndex[0].getRows();
+    },
+    searchTable() {
+      var filter, table, tr, td, i, txtValue;
+      filter = this.table_search.toUpperCase();
+      table = document.getElementById("concessions_credit");
+      tr = table.getElementsByTagName("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            table.style.display = "";
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    },
   },
   async mounted() {
     this.concession_cat = await api.getCategory("Concessions");
     this.fundraising_cat = await api.getCategory("Fundraising");
     this.signup_list = await this.getCurrentSignupList();
+    this.spreadsheet_id = (
+      await api.getCustomOption("concession_credits_google_sheet_id")
+    ).value;
+    this.sheet = await this.getSpreadsheet(this.spreadsheet_id);
   },
 };
 </script>
@@ -102,5 +188,34 @@ sup {
 }
 .fundraising_cat {
   background-color: $green-600;
+}
+
+#concessions_credit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-collapse: collapse;
+  min-width: 100%;
+  thead {
+    border-bottom: 2px solid #333;
+  }
+  tbody > :nth-child(even) {
+    background-color: #eee;
+  }
+  tr {
+    display: grid;
+    min-width: 100%;
+    grid-template-columns:
+      150px 150px
+      repeat(6, 1fr);
+    :nth-child(N + 3) {
+      text-align: center;
+    }
+    th,
+    td {
+      min-width: 85px;
+    }
+  }
 }
 </style>

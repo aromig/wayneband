@@ -1,9 +1,10 @@
 import request from "axios";
-import mapsApi from "@/gmaps-api";
+import googleApi from "@/google-api";
 
 export default {
   baseUrl: "https://www.wayneband.com/wp-json/wp/v2",
-  // acfUrl: "http://wayneband.com/wp-json/acf/v1",
+  acfUrl: "https://wayneband.com/wp-json/acf/v1",
+  customAPiUrl: "https://wayneband.com/wp-json/mo/v1",
 
   async getPage(slug) {
     let page = {};
@@ -529,7 +530,7 @@ export default {
         event_location_name: results.acf.location_name,
         event_location: results.acf.event_location,
         event_full_address: `${results.acf.event_location.street_number} ${results.acf.event_location.street_name}, ${results.acf.event_location.city}, ${results.acf.event_location.state}`,
-        event_map_url: `https://maps.google.com/maps?q=${results.acf.event_location.street_number}%20${results.acf.event_location.street_name}%2C%20${results.acf.event_location.city}%2C%20${results.acf.event_location.state}&t=&z=15&ie=UTF&iwloc=&output=embed&key=${mapsApi.mapsApiKey}`,
+        event_map_url: `https://maps.google.com/maps?q=${results.acf.event_location.street_number}%20${results.acf.event_location.street_name}%2C%20${results.acf.event_location.city}%2C%20${results.acf.event_location.state}&t=&z=15&ie=UTF&iwloc=&output=embed&key=${googleApi.mapsApiKey}`,
         related_link: results.acf.related_link,
       };
     });
@@ -661,5 +662,17 @@ export default {
     });
 
     return event;
+  },
+
+  async getCustomOption(name) {
+    let option = {};
+
+    request.defaults.baseURL = this.customAPiUrl;
+    await request.get(`/custom_options`).then((response) => {
+      const results = response.data;
+      option = results.filter((item) => (item.name = name));
+    });
+
+    return option[0];
   },
 };
