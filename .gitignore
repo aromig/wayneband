@@ -22,4 +22,4 @@ yarn-error.log*
 *.sln
 *.sw?
 
-/src/gmaps-api.js
+/src/google-api.js
