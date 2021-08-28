@@ -53,12 +53,14 @@
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Shift 1</th>
-              <th>Shift 2</th>
-              <th>Shift 3</th>
-              <th>Shift 4</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
               <th>Varsity FB</th>
               <th>Varsity FB</th>
+              <th>Halftime USA</th>
             </tr>
           </thead>
           <tbody>
@@ -73,8 +75,10 @@
               <td>{{ row["2"] }}</td>
               <td>{{ row["3"] }}</td>
               <td>{{ row["4"] }}</td>
+              <td>{{ row["5"] }}</td>
               <td>{{ row["Varsity FB 1"] }}</td>
               <td>{{ row["Varisty FB 2"] }}</td>
+              <td>{{ row["halftime"] }}</td>
             </tr>
           </tbody>
         </table>
@@ -207,14 +211,15 @@ sup {
     display: grid;
     min-width: 100%;
     grid-template-columns:
-      150px 150px
-      repeat(6, 1fr);
+      125px 100px
+      repeat(5, 50px)
+      repeat(3, 100px);
     :nth-child(N + 3) {
       text-align: center;
     }
     th,
     td {
-      min-width: 85px;
+      min-width: 50px;
     }
   }
 }

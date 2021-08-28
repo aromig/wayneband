@@ -3,7 +3,7 @@ import googleApi from "@/google-api";
 
 export default {
   baseUrl: "https://www.wayneband.com/wp-json/wp/v2",
-  acfUrl: "https://wayneband.com/wp-json/acf/v1",
+  acfUrl: "https://wayneband.com/wp-json/acf/v3",
   customAPiUrl: "https://wayneband.com/wp-json/mo/v1",
 
   async getPage(slug) {
@@ -604,7 +604,7 @@ export default {
 
   async getSignUpEvents(page = 1, perPage = 100, order = "desc") {
     let query = `/signups?orderby=signup_date&order=${order}`;
-    query += `&page=${page}&perPage=${perPage}`;
+    query += `&page=${page}&per_page=${perPage}`;
 
     let eventList = {};
 
