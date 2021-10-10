@@ -60,7 +60,6 @@
               <th>5</th>
               <th>Varsity FB</th>
               <th>Varsity FB</th>
-              <th>Halftime USA</th>
             </tr>
           </thead>
           <tbody>
@@ -77,8 +76,7 @@
               <td>{{ row["4"] }}</td>
               <td>{{ row["5"] }}</td>
               <td>{{ row["Varsity FB 1"] }}</td>
-              <td>{{ row["Varisty FB 2"] }}</td>
-              <td>{{ row["halftime"] }}</td>
+              <td>{{ row["Varsity FB 2"] }}</td>
             </tr>
           </tbody>
         </table>
