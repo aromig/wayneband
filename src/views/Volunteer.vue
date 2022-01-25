@@ -127,15 +127,17 @@ export default {
       return results.data
         .filter(
           (signup) =>
-            wmc.formatDate(signup.signup_date, "short") >=
-            wmc.formatDate(new Date(), "short")
+            new Date(signup.signup_date).toISOString().split("T")[0] >=
+            new Date().toISOString().split("T")[0]
         )
         .sort((a, b) => new Date(a.signup_date) - new Date(b.signup_date));
     },
     async getPastSignUpList() {
       let results = await api.getSignUpEvents();
       return results.data.filter(
-        (signup) => signup.signup_date < wmc.formatDate(new Date())
+        (signup) =>
+          new Date(signup.signup_date).toISOString().split("T")[0] <
+          new Date().toISOString().split("T")[0]
       );
     },
     async getSpreadsheet(sheet_id) {
