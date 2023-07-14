@@ -58,6 +58,7 @@
               <th>3</th>
               <th>4</th>
               <th>5</th>
+              <th>6</th>
               <th>Varsity FB</th>
               <th>Varsity FB</th>
             </tr>
@@ -75,6 +76,7 @@
               <td>{{ row["3"] }}</td>
               <td>{{ row["4"] }}</td>
               <td>{{ row["5"] }}</td>
+              <td>{{ row["6"] }}</td>
               <td>{{ row["Varsity FB 1"] }}</td>
               <td>{{ row["Varsity FB 2"] }}</td>
             </tr>
