@@ -35,7 +35,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^5.2.3",
-    "postcss": "^7.0.39",
+    "postcss": "^8.4.31",
     "postcss-loader": "^4.0.3",
     "prettier": "^1.19.1",
     "sass": "^1.38.0",
