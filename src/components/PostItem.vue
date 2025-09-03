@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use "../assets/css/_variables.scss" as *;
+
 .more-link,
 .post {
   & section {

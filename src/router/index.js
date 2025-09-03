@@ -27,26 +27,6 @@ const routes = [
       ],
     },
   },
-  {
-    path: "/*/*/*/:slug",
-    name: "post",
-    component: () => import("../views/Post.vue"),
-    meta: {
-      title: "Wayne High School Marching Band and Warriorettes",
-      metaTags: [
-        {
-          name: "description",
-          content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
-        },
-        {
-          property: "og.description",
-          content:
-            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
-        },
-      ],
-    },
-  },
 
   {
     path: "/photos",
@@ -299,6 +279,27 @@ const routes = [
     path: "/:slug",
     name: "page",
     component: () => import("../views/Page.vue"),
+    meta: {
+      title: "Wayne High School Marching Band and Warriorettes",
+      metaTags: [
+        {
+          name: "description",
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+        {
+          property: "og.description",
+          content:
+            "Wayne Music Club, a non-profit organization with the intent of furthering the best interests of the Wayne High School Bands.",
+        },
+      ],
+    },
+  },
+
+  {
+    path: "/*/*/*/:slug",
+    name: "post",
+    component: () => import("../views/Post.vue"),
     meta: {
       title: "Wayne High School Marching Band and Warriorettes",
       metaTags: [

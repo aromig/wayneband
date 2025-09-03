@@ -52,13 +52,15 @@
           <thead>
             <tr>
               <th>First Name</th>
-              <th>Last Name</th>
+              <th>Last Initial</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
               <th>4</th>
               <th>5</th>
               <th>6</th>
+              <th>7</th>
+              <th>8</th>
               <th>Varsity FB</th>
               <th>Varsity FB</th>
             </tr>
@@ -69,16 +71,18 @@
               :key="row._rowNumber"
               :id="'row__' + row._rowNumber"
             >
-              <td>{{ row["First Name"] }}</td>
-              <td>{{ row["Last Name"] }}</td>
-              <td>{{ row["1"] }}</td>
-              <td>{{ row["2"] }}</td>
-              <td>{{ row["3"] }}</td>
-              <td>{{ row["4"] }}</td>
-              <td>{{ row["5"] }}</td>
-              <td>{{ row["6"] }}</td>
-              <td>{{ row["Varsity FB 1"] }}</td>
-              <td>{{ row["Varsity FB 2"] }}</td>
+              <td>{{ row._rawData[0] }}</td>
+              <td>{{ row._rawData[1] }}</td>
+              <td>{{ row._rawData[2] }}</td>
+              <td>{{ row._rawData[3] }}</td>
+              <td>{{ row._rawData[4] }}</td>
+              <td>{{ row._rawData[5] }}</td>
+              <td>{{ row._rawData[6] }}</td>
+              <td>{{ row._rawData[7] }}</td>
+              <td>{{ row._rawData[8] }}</td>
+              <td>{{ row._rawData[9] }}</td>
+              <td>{{ row._rawData[10] }}</td>
+              <td>{{ row._rawData[11] }}</td>
             </tr>
           </tbody>
         </table>
@@ -94,7 +98,7 @@ import HeaderDivider from "@/components/HeaderDivider.vue";
 import api from "@/wp-api";
 import wmc from "@/wmc";
 import googleApi from "@/google-api";
-const { GoogleSpreadsheet } = require("google-spreadsheet");
+import { GoogleSpreadsheet } from"google-spreadsheet";
 
 export default {
   name: "Volunteer",
@@ -143,8 +147,8 @@ export default {
       );
     },
     async getSpreadsheet(sheet_id) {
-      const doc = new GoogleSpreadsheet(sheet_id);
-      await doc.useApiKey(googleApi.sheetsApiKey);
+      const doc = new GoogleSpreadsheet(sheet_id, { apiKey: googleApi.sheetsApiKey});
+      //await doc.useApiKey(googleApi.sheetsApiKey);
       await doc.loadInfo();
       return await doc.sheetsByIndex[0].getRows();
     },
@@ -181,6 +185,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use "../assets/css/_variables.scss" as *;
+
 sup {
   color: #fff;
   font-weight: 500;
@@ -214,8 +220,8 @@ sup {
     min-width: 100%;
     grid-template-columns:
       125px 100px
-      repeat(5, 50px)
-      repeat(3, 100px);
+      repeat(8, 50px)
+      repeat(2, 100px);
     :nth-child(N + 3) {
       text-align: center;
     }

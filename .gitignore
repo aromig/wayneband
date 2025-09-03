@@ -23,3 +23,4 @@ yarn-error.log*
 *.sw?
 
 /src/google-api.js
+/public/media/*

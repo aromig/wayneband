@@ -10,7 +10,7 @@ export default {
   },
 
   bgVideos: [
-    "https://drive.google.com/u/0/uc?id=11h6OevccipLkqBtXL5rYbxLqZWBMGFfW&export=download",
+    "/media/WayneBand_com-VideoBackground.mp4"
   ],
 
   formatDate(post_date, type = "long") {

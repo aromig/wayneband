@@ -240,6 +240,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../assets/css/_variables.scss" as *;
+
 .event_date {
   min-width: 6rem;
 }

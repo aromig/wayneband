@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use "../assets/css/_variables.scss" as *;
+
 table {
   display: table;
   table-layout: auto;

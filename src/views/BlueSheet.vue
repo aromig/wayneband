@@ -102,6 +102,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use "../assets/css/_variables.scss" as *;
+
 $link_color: #c53030;
 $link_color_hover: #f56565;
 $text-gray-700: #4a5568;

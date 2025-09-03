@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
+@use "./assets/css/_variables.scss" as *;
 @import url("https://fonts.googleapis.com/css?family=Patua+One&display=swap");
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");

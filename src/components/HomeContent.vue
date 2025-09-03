@@ -180,6 +180,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../assets/css/_variables.scss" as *;
+
 #recent-posts {
   transition: background-image 1s linear;
 }
