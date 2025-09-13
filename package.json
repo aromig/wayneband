@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "eslint-plugin-vue": "^8.7.1",
     "google-spreadsheet": "^5.0.2",
     "lodash": "^4.17.21",
